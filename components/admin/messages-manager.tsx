@@ -1,0 +1,413 @@
+"use client";
+
+import { useRef, useState } from "react";
+import {
+  Mail,
+  Calendar,
+  Trash2,
+  RefreshCw,
+  Inbox,
+  MailCheck,
+  MailOpen,
+  ArrowLeft,
+  MapPin,
+  Globe,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { closeDialog, showDialog } from "../showDialog";
+import { formatDate } from "@/app/utils/format-date";
+import { toast } from "sonner";
+import { useMessages } from "@/app/contexts/use-messages";
+import { ContactMessage } from "@/lib/supabase";
+
+export function MessagesManager() {
+  const {
+    messages,
+    getMessages,
+    isLoading,
+    deleteMessage,
+    markMessageAsRead,
+    markMessageAsNotRead,
+  } = useMessages();
+  const leadsRef = useRef<HTMLDivElement | null>(null);
+  const newMessages = messages.filter(
+    (message) =>
+      new Date(message.created_at).toDateString() === new Date().toDateString(),
+  );
+
+  const handleDelete = async (id: string) => {
+    showDialog({
+      title: "Borrar mensaje",
+      content: (
+        <div>
+          <p>¿Estás seguro de que quieres eliminar este mensaje?</p>
+          <div className="flex justify-center mx-auto gap-4 my-2">
+            <button
+              className="px-6 py-2  border border-zinc-border rounded-md bg-red-400/70 active:scale-90 hover:opacity-90 hover:outline-offset-1 hover:outline-1 hover:outline-zinc-600"
+              onClick={() => {
+                deleteMessage(id);
+                closeDialog();
+                toast.error("Mensaje eliminado correctamente");
+              }}
+            >
+              Aceptar
+            </button>
+            <button
+              className="px-6 py-2 border border-zinc-border rounded-md bg-zinc-700/50 active:scale-90 hover:opacity-90 hover:outline-offset-1 hover:outline-1 hover:outline-zinc-600"
+              onClick={() => closeDialog()}
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      ),
+    });
+  };
+
+  const [selectedLead, setSelectedLead] = useState<ContactMessage | null>(null);
+
+  const handleClik = (lead: ContactMessage) => {
+    markMessageAsRead(lead.id);
+    setSelectedLead(lead);
+  };
+
+  if (selectedLead) {
+    return (
+      <div className="space-y-4 sm:space-y-6">
+        <Button
+          onClick={() => setSelectedLead(null)}
+          variant="outline"
+          className="w-full sm:w-auto"
+        >
+          <ArrowLeft />
+          Volver
+        </Button>
+        <article className="gmail-lead-article bg-card shadow-sm border p-4 sm:p-6">
+          <div className="gmail-lead-header border-b pb-4 mb-4">
+            <h2 className="gmail-lead-name text-xl sm:text-2xl font-bold mb-2 break-words">
+              {selectedLead.name}
+            </h2>
+            <div className="gmail-lead-email flex items-start gap-2 text-muted-foreground text-sm">
+              <Mail className="w-4 h-4 flex-shrink-0 mt-0.5" />
+              <span className="break-words">
+                {selectedLead.email} &mdash; para{" "}
+                <span className="text-foreground font-medium">@StudioNeo</span>
+              </span>
+            </div>
+            <div className="gmail-lead-email flex items-start gap-2 text-muted-foreground text-sm">
+              <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
+              <span>
+                {selectedLead.city}, {selectedLead.country} &mdash;
+              </span>
+            </div>
+          </div>
+          <p className="gmail-lead-message whitespace-pre-wrap text-foreground leading-relaxed min-h-[100px] text-sm">
+            {selectedLead.message}
+          </p>
+          <Button
+            className="text-xs sm:text-sm"
+            onClick={() =>
+              window.open(`mailto:${selectedLead.email}`, "_blank")
+            }
+          >
+            Responder con Gmail
+          </Button>
+          <div className="mt-8 pt-4 flex flex-col border-t text-xs sm:text-sm text-muted-foreground items-start sm:items-center gap-2">
+            <p className="flex items-center gap-2 flex-wrap">
+              <Globe className="w-4 h-4 flex-shrink-0" />
+              Zona horaria: {selectedLead.timezone}
+            </p>
+            <p className="flex items-center gap-1 flex-wrap">
+              <Calendar className="w-3 h-3 flex-shrink-0" />
+              Enviado el {formatDate(selectedLead.created_at)} desde
+              <span className="text-primary">
+                {selectedLead.system || "(no disponible)"}
+              </span>{" "}
+              con IP: <span className="text-primary">{selectedLead.ip}</span>
+            </p>
+          </div>
+        </article>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+        <div>
+          <h1 className="text-2xl font-bold text-foreground">
+            Mensajes de Contacto
+          </h1>
+          <p className="text-muted-foreground text-sm sm:text-base">
+            Mensajes recibidos del formulario de contacto
+          </p>
+        </div>
+        <Button
+          variant="outline"
+          onClick={getMessages}
+          disabled={isLoading}
+          className="w-full sm:w-auto"
+        >
+          <RefreshCw
+            className={`w-4 h-4 mr-2 ${isLoading ? "animate-spin" : ""}`}
+          />
+          Actualizar
+        </Button>
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+        <Card className="bg-card/50">
+          <CardContent className="p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-foreground">
+              {messages.length}
+            </div>
+            <div className="text-xs sm:text-sm text-muted-foreground">
+              Total mensajes
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="bg-card/50">
+          <CardContent className="p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-foreground">
+              {
+                messages.filter(
+                  (l) =>
+                    new Date(l.created_at) >
+                    new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+                ).length
+              }
+            </div>
+            <div className="text-xs sm:text-sm text-muted-foreground">
+              Esta semana
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="bg-card/50">
+          <CardContent className="p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-foreground">
+              {
+                messages.filter(
+                  (l) =>
+                    new Date(l.created_at) >
+                    new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+                ).length
+              }
+            </div>
+            <div className="text-xs sm:text-sm text-muted-foreground">
+              Este mes
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="bg-card/50">
+          <CardContent className="p-3 sm:p-4">
+            <div className="text-xl sm:text-2xl font-bold text-foreground">
+              {newMessages.length}
+            </div>
+            <div className="text-xs sm:text-sm text-muted-foreground">Hoy</div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Leads List */}
+      {isLoading ? (
+        <div className="space-y-3 sm:space-y-4">
+          {[1, 2, 3].map((i) => (
+            <Card key={i} className="animate-pulse">
+              <CardContent className="p-3 sm:p-6">
+                <div className="h-4 sm:h-5 bg-muted rounded w-1/3 mb-3" />
+                <div className="h-3 sm:h-4 bg-muted rounded w-full mb-2" />
+                <div className="h-3 sm:h-4 bg-muted rounded w-2/3" />
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      ) : messages.length === 0 ? (
+        <Card className="bg-card/50">
+          <CardContent className="p-12 text-center">
+            <Inbox className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-foreground mb-2">
+              No hay mensajes
+            </h3>
+            <p className="text-sm sm:text-base text-muted-foreground">
+              Los mensajes del formulario de contacto aparecerán aquí
+            </p>
+          </CardContent>
+        </Card>
+      ) : (
+        <div className="border-t border-border" ref={leadsRef}>
+          {messages.map((messages, idx) => (
+            <div
+              key={messages.id}
+              className={`border-b border-border hover:bg-primary/5 transition-colors cursor-pointer ${
+                messages.status === false ? "bg-primary/10" : ""
+              } ${idx === 0 ? "" : ""}`}
+              onClick={() => handleClik(messages)}
+            >
+              {/* Vista Móvil */}
+              <div className="sm:hidden p-3 space-y-2">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0 flex-1">
+                    <h3
+                      className={`text-sm font-semibold truncate ${
+                        messages.status === false
+                          ? "text-white"
+                          : "text-foreground"
+                      }`}
+                    >
+                      {messages.name}
+                    </h3>
+                    <p className="text-xs text-muted-foreground truncate">
+                      {messages.email}
+                    </p>
+                  </div>
+                  {messages.status === false && (
+                    <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>
+                  )}
+                </div>
+                <p className="text-xs text-muted-foreground line-clamp-2">
+                  {messages.message}
+                </p>
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                  <span>{formatDate(messages.created_at)}</span>
+                  <div className="flex gap-1">
+                    {messages.status === false ? (
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-6 w-6 p-0"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          markMessageAsRead(messages.id);
+                          toast.info("Se marcó el mesaje como leído.");
+                        }}
+                      >
+                        <Mail size={16} />
+                      </Button>
+                    ) : (
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-6 w-6 p-0"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          markMessageAsNotRead(messages.id);
+                          toast.info("Se marcó el mensaje como no leído.");
+                        }}
+                      >
+                        <MailOpen size={16} />
+                      </Button>
+                    )}
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-6 w-6 p-0 hover:text-red-500"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(messages.id);
+                      }}
+                    >
+                      <Trash2 size={16} />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Vista Desktop */}
+              <div className="hidden sm:block p-6 hover:bg-primary/5">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <h3
+                      className={`text-lg font-semibold hover:text-primary transition-colors ${
+                        messages.status === false
+                          ? "text-white"
+                          : "text-foreground"
+                      }`}
+                    >
+                      {messages.name}
+                    </h3>
+                    <div
+                      className={`flex items-center gap-4 mt-2 text-sm ${
+                        messages.status === false
+                          ? "text-white"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      <span className="flex items-center gap-1 truncate">
+                        <Mail className="w-3 h-3 flex-shrink-0" />
+                        <span className="truncate">{messages.email}</span>
+                      </span>
+                      <span className="flex items-center gap-1 flex-shrink-0">
+                        <Calendar className="w-3 h-3 flex-shrink-0" />
+                        {formatDate(messages.created_at)}
+                      </span>
+                      {messages.status === true ? (
+                        <span className="flex items-center gap-1">
+                          <MailCheck className="w-3 h-3" />
+                          Leído
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1 bg-linear-to-b from-blue-600 to-blue-800 border border-blue-600 px-3 rounded-full text-xs">
+                          <Mail className="w-3 h-3" />
+                          Nuevo!
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex gap-2 flex-shrink-0">
+                    {messages.status === false ? (
+                      <Button
+                        title="Marcar mensaje como leído"
+                        className="bg-black/25 relative"
+                        variant="ghost"
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          markMessageAsRead(messages.id);
+                          toast.info("Se marcó el mesaje como leído.");
+                        }}
+                      >
+                        <Mail size={20} />
+                        <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-linear-to-br from-red-400 to-red-800 border-red-400 border"></span>
+                      </Button>
+                    ) : (
+                      <Button
+                        title="Marcar copmo no léido"
+                        className="bg-black/25"
+                        variant="ghost"
+                        size="sm"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          markMessageAsNotRead(messages.id);
+                          toast.info("Se marcó el mensaje como no leído.");
+                        }}
+                      >
+                        <MailOpen size={20} />
+                      </Button>
+                    )}
+                    <Button
+                      className="bg-black/25 group"
+                      variant="ghost"
+                      size="sm"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(messages.id);
+                      }}
+                    >
+                      <Trash2
+                        size={20}
+                        className="group-hover:text-red-500/80"
+                      />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}

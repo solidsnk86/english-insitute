@@ -1,0 +1,111 @@
+"use client";
+
+import { ArrowRight, Sparkles } from "lucide-react";
+import { useProjects } from "@/app/contexts/use-projects";
+import Typewriter from "typewriter-effect";
+import AnimatedNumbers from "react-animated-numbers";
+
+export function Hero() {
+  const { projects } = useProjects();
+
+  return (
+    <section
+      id="inicio"
+      className="relative min-h-screen flex items-center justify-center pt-18"
+    >
+      {/* Aurora Background Effect */}
+      <div className="absolute top-1/4 -left-1/4 w-150 h-150 bg-primary/30 dark:bg-primary/70 rounded-full blur-[120px] animate-aurora opacity-80" />
+      <div
+        className="absolute bottom-1/4 -right-1/4 w-125 h-125 bg-primary/25 dark:bg-primary/60 rounded-full blur-[100px] animate-aurora"
+        style={{ animationDelay: "-4s" }}
+      />
+
+      {/* Grid Pattern */}
+      <div
+        className="absolute inset-0 dark:opacity-100 opacity-30"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px)`,
+          backgroundSize: "50px 50px",
+        }}
+      />
+      <div className="container mx-auto px-4 relative z-10 ">
+        <div className="max-w-5xl mx-auto text-center mt-8">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mt-8 mb-6">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-sm text-primary font-medium">Cursos de Inglés</span>
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 md:leading-20 text-balance">
+            Aprendé inglés con confianza y fluidez en
+            <span className="text-primary">
+              <Typewriter
+                options={{
+                  strings: [
+                    "clases para niños.",
+                    "cursos para adultos.",
+                    "preparación en exámenes.",
+                    "clases empresas.",
+                  ],
+                  autoStart: true,
+                  loop: true,
+                  deleteSpeed: 35,
+                }}
+              />
+            </span>
+          </h1>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a
+              href="#contacto"
+              className="group relative inline-flex items-center gap-2 w-50 md:w-64 text-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg overflow-hidden cursor-pointer"
+              style={{ willChange: "transform" }}
+            >
+              <span className="relative z-10 flex items-center gap-2 text-xs md:text-base">
+                Inscribirme
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </a>
+
+            <a
+              href="#cursos"
+              className="group relative inline-flex items-center gap-2 w-50 md:w-64 text-center justify-center px-8 py-4 bg-transparent border-2 border-foreground/20 dark:border-foreground/20 text-foreground font-semibold rounded-lg overflow-hidden cursor-pointer hover:border-primary/50"
+              style={{ willChange: "transform" }}
+            >
+              <span className="relative z-10 text-xs md:text-base">Ver cursos</span>
+              <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            </a>
+          </div>
+
+          {/* Stats */}
+          <div className="mt-24 grid grid-cols-3 gap-8 max-w-md mx-auto">
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-foreground">
+                <AnimatedNumbers animateToNumber={120} />
+                <span className="text-primary">+</span>
+              </div>
+              <div className="text-sm text-muted-foreground">Alumnos</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-foreground">
+                <AnimatedNumbers animateToNumber={98} />
+                <span className="text-primary">%</span>
+              </div>
+              <div className="text-sm text-muted-foreground">Satisfacción</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-foreground">
+                <AnimatedNumbers animateToNumber={52} />
+                <span className="text-primary">+</span>
+              </div>
+              <div className="text-sm text-muted-foreground">Años enseñando</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
