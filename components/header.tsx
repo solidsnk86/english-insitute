@@ -104,8 +104,8 @@ export function Header() {
             <Image
               className="bg-transparent"
               src="/logo-instituto.png"
-              width={85}
-              height={85}
+              width={80}
+              height={80}
               alt="Instituto logo"
             />
           </Link>

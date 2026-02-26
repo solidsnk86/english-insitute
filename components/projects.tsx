@@ -16,9 +16,7 @@ export function Projects() {
     swiperRef ? swiperRef?.activeIndex + 1 : 1,
   );
 
-  const featuredProjects = projects.filter(
-    (project) => project.featured === true,
-  );
+  const featuredProjects: any = []
 
   return (
     <section id="proyectos" className="relative">
@@ -26,13 +24,13 @@ export function Projects() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-            Portafolio
+            Casos de éxito
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance">
-            Proyectos destacados
+            Que dicen nuestros alumnos
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Una selección de nuestros trabajos más recientes y exitosos.
+            Una selección de nuestros alumnos más recientes y exitosos casos.
           </p>
         </div>
 
@@ -77,7 +75,7 @@ export function Projects() {
               }}
             >
               {featuredProjects && featuredProjects.length > 0 ? (
-                featuredProjects.map((project, i) => {
+                featuredProjects.map((project: any, i: number) => {
                   return (
                     <SwiperSlide key={project.id}>
                       <Link
@@ -137,7 +135,7 @@ export function Projects() {
                 })
               ) : (
                 <SwiperSlide>
-                  <div>No hay productos cargados aún.</div>
+                  <div>No hay contenido cargado aún.</div>
                 </SwiperSlide>
               )}
             </Swiper>

@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center pt-18"
+      className="relative min-h-screen flex items-center justify-center pt-14"
     >
       {/* Aurora Background Effect */}
       <div className="absolute top-1/4 -left-1/4 w-150 h-150 bg-primary/30 dark:bg-primary/70 rounded-full blur-[120px] animate-aurora opacity-80" />
