@@ -60,28 +60,20 @@ export function RegisterForm() {
         <Link href="/" className="flex items-center">
           <Image
             className="bg-transparent"
-            src="/logo.png"
-            width={45}
-            height={45}
-            alt=""
+            src="/logo-instituto.png"
+            width={85}
+            height={85}
+            alt="Logo insituto"
           />
-          <div className="flex font-bold text-xl text-foreground">
-            <span>
-              Studio
-              <span className="bg-clip-text text-transparent bg-linear-120 from-blue-400 via-blue-600 to-blue-700">
-                Neo
-              </span>
-            </span>
-          </div>
         </Link>
       </div>
-      <Card className="bg-card/50 border-border shadow-lg shadow-blue-500/50">
+      <Card className="bg-card/50 border-border">
         <div className="text-center mb-4 px-4">
           <h3 className="font-semibold uppercase text-xl text-center justify-center mb-4">
             registra tu cuenta
           </h3>
           <p className="text-muted-foreground mt-2">
-            Llená el formulario con tus datos y comenzá a gestionar tu negocio
+            Llená el formulario con tus datos y comenzá a gestionar tu web
           </p>
         </div>
         <CardContent className="pt-6">
@@ -184,7 +176,7 @@ export function RegisterForm() {
 
             <Button
               type="submit"
-              className="w-full mt-4 bg-blue-600/50 hover:bg-blue-500/80 transition-colors duration-300 ml-1"
+              className="w-full mt-4 bg-primary hover:bg-primary/80 transition-colors duration-300 ml-1"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -199,7 +191,7 @@ export function RegisterForm() {
             <div className="relative flex gap-2 justify-center text-muted-foreground text-sm">
               ¿Ya estás registrado?
               <Link
-                className="hover:text-blue-500 transition-colors duration-300 ml-1"
+                className="hover:text-primary transition-colors duration-300 ml-1"
                 href={"/admin/login"}
               >
                 Inicia sesión aquí

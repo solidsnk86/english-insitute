@@ -21,7 +21,7 @@ export const BackButton = ({ ...props }: BackButtonProps) => {
     <button className="absolute top-4 left-4" {...props}>
       <Link
         href={validatePathname(pathname)}
-        className="flex group justify-center rounded-md w-28 text-center gap-1.5 mx-auto py-2 bg-blue-500 hover:bg-blue-500/80 transition-colors duration-300"
+        className="flex group justify-center rounded-md w-28 text-center gap-1.5 mx-auto py-2 bg-primary hover:bg-primary/80 transition-colors duration-300"
       >
         <ArrowLeft className="text-white group-hover:-translate-x-1 transition-transform" />
         <div className="text-md font-bold text-white">Volver</div>

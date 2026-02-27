@@ -54,22 +54,14 @@ export const ForgottenPasswordForm = () => {
           <Link href="/admin" className="flex items-center">
             <Image
               className="bg-transparent"
-              src="/logo.png"
-              width={45}
-              height={45}
+              src="/logo-instituto.png"
+              width={85}
+              height={85}
               alt=""
             />
-            <div className="flex font-bold text-xl text-foreground">
-              <span>
-                Studio
-                <span className="bg-clip-text text-transparent bg-linear-120 from-blue-400 via-blue-600 to-blue-700">
-                  Neo
-                </span>
-              </span>
-            </div>
           </Link>
         </div>
-        <Card className="bg-card/50 md:w-100 border-border shadow-lg shadow-blue-500/50">
+        <Card className="bg-card/50 md:w-100 border-border">
           <CardContent className="grid gap-4">
             <div className="text-center">
               <h3 className="font-semibold uppercase text-xl text-center justify-center mb-4">
@@ -99,7 +91,7 @@ export const ForgottenPasswordForm = () => {
 
               <Button
                 type="submit"
-                className="w-full hover:bg-blue-500 transition-colors duration-300"
+                className="w-full hover:bg-primary/80 transition-colors duration-300"
                 disabled={isLoading}
               >
                 {isLoading ? (

@@ -57,31 +57,26 @@ export function LoginForm() {
   return (
     <section>
       <div className="flex justify-center mb-4">
-        <Link href="/" className="flex items-center">
+        <div>
+          <Link href="/" className="flex items-center justify-center">
           <Image
             className="bg-transparent"
-            src="/logo.png"
-            width={45}
-            height={45}
+            src="/logo-instituto.png"
+            width={85}
+            height={85}
             alt=""
           />
-          <div className="flex font-bold text-xl text-foreground">
-            <span>
-              Studio
-              <span className="bg-clip-text text-transparent bg-linear-120 from-blue-400 via-blue-600 to-blue-700">
-                Neo
-              </span>
-            </span>
-          </div>
         </Link>
+        <h3 className="text-2xl font-bold">Panel de administración</h3>
+        </div>
       </div>
-      <Card className="bg-card/50 border-border shadow-lg shadow-blue-500/50">
+      <Card className="bg-card/50 border-border">
         <div className="text-center px-4">
           <h3 className="font-semibold uppercase text-xl text-center justify-center">
             iniciar sesión
           </h3>
           <p className="text-muted-foreground mt-2">
-            Ingresá tus datos para continuar gestionando tu negocio
+            Ingresá tus datos para continuar gestionando tu contenido
           </p>
         </div>
         <CardContent className="pt-4">
@@ -128,7 +123,7 @@ export function LoginForm() {
             </div>
             <div className="relative text-muted-foreground text-sm text-right ">
               <Link
-                className="hover:text-blue-500 transition-colors duration-300"
+                className="hover:text-primary transition-colors duration-300"
                 href={"/admin/forgotten-password"}
               >
                 ¿Has olvidado la contraseña?
@@ -144,7 +139,7 @@ export function LoginForm() {
 
             <Button
               type="submit"
-              className="w-full hover:bg-blue-500 transition-colors duration-300"
+              className="w-full hover:bg-primary/80 transition-colors duration-300"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -159,7 +154,7 @@ export function LoginForm() {
             <div className="relative flex gap-2 justify-center text-muted-foreground text-sm">
               ¿Aún no tienes una cuenta?
               <Link
-                className="hover:text-blue-500 transition-colors duration-300 ml-1"
+                className="hover:text-primary transition-colors duration-300 ml-1"
                 href={"/admin/register"}
               >
                 Regístrate aquí

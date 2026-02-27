@@ -73,7 +73,8 @@ export const WhyUs = () => {
 
             <h2
               ref={titleRef}
-              className="text-3xl lg:text-4xl font-bold leading-tight"
+              className="text-3xl lg:text-4xl font-bold leading-tight section-title"
+              data-anim="right"
             >
               La experiencia y la enseñanza que marcan la diferencia
             </h2>

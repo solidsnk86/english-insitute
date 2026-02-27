@@ -45,7 +45,7 @@ export function Services() {
           <span className="text-primary text-sm font-semibold tracking-wider uppercase">
             Nuestros cursos
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance section-title" data-anim="left">
             Programas diseñados para todos los niveles
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
@@ -61,8 +61,8 @@ export function Services() {
           <div className="absolute -left-50 -top-25 w-120 h-120 rounded-full blur-3xl bg-teal-500/10 dark:bg-teal-800/20 opacity-40"></div>
           <div className="absolute -left-14 top-7 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-500/25 opacity-40"></div>
           {/* Efecto de background inferior */}
-          <div className="absolute -right-50 -bottom-25 w-120 h-120 rounded-full blur-3xl bg-teal-500/10 dark:bg-teal-800/20 opacity-40"></div>
-          <div className="absolute -right-14 bottom-1 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-500/25 opacity-40"></div>
+          <div className="absolute -right-50 -bottom-25 w-120 h-120 rounded-full blur-3xl bg-teal-500/10 dark:bg-teal-800/20 opacity-50 dark:opacity-30"></div>
+          <div className="absolute -right-14 bottom-1 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-600/25 opacity-50 dark:opacity-30"></div>
           {services.map((service) => (
             <Card
               key={service.title}

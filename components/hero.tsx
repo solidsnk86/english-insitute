@@ -37,7 +37,7 @@ export function Hero() {
           </div>
 
           {/* Heading */}
-          <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 md:leading-20 text-balance">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-foreground mb-6 md:leading-20 text-balance section-title" data-anim="top">
             Aprendé inglés con confianza y fluidez en
             <span className="text-primary">
               <Typewriter
