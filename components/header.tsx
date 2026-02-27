@@ -118,7 +118,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground font-semibold hover:text-foreground transition-colors text-sm font-medium"
+                className="text-muted-foreground font-semibold hover:text-foreground transition-colors text-sm"
               >
                 {link.label}
               </Link>
@@ -140,12 +140,12 @@ export function Header() {
             {/* CTA Button */}
             <FancyButton
               isLink
-              linkURL="/admin/register"
+              linkURL="#contacto"
               inset={1}
               duration={3}
               className="w-full py-2 px-2 justify-center text-center"
             >
-              <span className="relative">Inscribirme</span>
+              <span className="relative">Empezar</span>
             </FancyButton>
           </div>
         </div>
