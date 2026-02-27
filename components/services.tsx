@@ -58,11 +58,11 @@ export function Services() {
         {/* Services Grid */}
         <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Efecto de background superior */}
-          <div className="absolute -left-50 -top-25 w-120 h-120 rounded-full blur-3xl bg-blue-500/10 dark:bg-blue-800/20 opacity-40"></div>
-          <div className="absolute -left-14 top-7 w-120 h-120 rounded-full blur-3xl bg-blue-400/15 dark:bg-blue-500/25 opacity-40"></div>
+          <div className="absolute -left-50 -top-25 w-120 h-120 rounded-full blur-3xl bg-teal-500/10 dark:bg-teal-800/20 opacity-40"></div>
+          <div className="absolute -left-14 top-7 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-500/25 opacity-40"></div>
           {/* Efecto de background inferior */}
-          <div className="absolute -right-50 -bottom-25 w-120 h-120 rounded-full blur-3xl bg-blue-500/10 dark:bg-blue-800/20 opacity-40"></div>
-          <div className="absolute -right-14 bottom-1 w-120 h-120 rounded-full blur-3xl bg-blue-400/15 dark:bg-blue-500/25 opacity-40"></div>
+          <div className="absolute -right-50 -bottom-25 w-120 h-120 rounded-full blur-3xl bg-teal-500/10 dark:bg-teal-800/20 opacity-40"></div>
+          <div className="absolute -right-14 bottom-1 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-500/25 opacity-40"></div>
           {services.map((service) => (
             <Card
               key={service.title}
@@ -73,7 +73,7 @@ export function Services() {
               <div className="absolute top-18 left-[50%] -translate-x-[50%] w-78 h-78 rotate-135 bg-linear-to-tr dark:from-blue-100/40 via-slate-100/15 dark:via-zinc-900/15 to-slate-200/50 dark:to-zinc-950/50 blur-xl opacity-2 group-hover:opacity-80 transition-opacity duration-300 blink" />
               <CardContent className="p-6">
                 <div
-                  className={`w-12 h-12 rounded-lg bg-primary/10 z-10 flex items-center justify-center mx-auto mb-4 dark:group-hover:bg-blue-800/50 
+                  className={`w-12 h-12 rounded-lg bg-primary/10 z-10 flex items-center justify-center mx-auto mb-4 dark:group-hover:bg-primary/50 
                   border border-border dark:group-hover:border-t-blue-100/70 dark:group-hover:border-l-blue-100/30 dark:group-hover:border-r-blue-100/30 dark:group-hover:border-b-blue-100/15 
                   transition-colors group-hover:shadow-black shadow-2xl btn-animation`}
                 >

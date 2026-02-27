@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ProjectProvider } from "./contexts/use-projects";
 import { LeadsProvider } from "./contexts/use-messages";
@@ -9,7 +9,7 @@ import { AppointmentsProvider } from "./contexts/use-appointments";
 import { LocationProvider } from "./contexts/use-location";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const _inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ weight: ["300"] ,subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -63,18 +63,13 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      {
-        url: "/logo.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/logo.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-    ],
-    apple: "/logo.png",
-  },
+  icon: [
+    { url: "/favicon.ico" },
+    { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+  ],
+  apple: "/apple-touch-icon.png",
+},
 };
 
 export default function RootLayout({

@@ -11,13 +11,13 @@
   --card-foreground: oklch(0.15 0.01 260);
   --popover: oklch(0.99 0.005 260);
   --popover-foreground: oklch(0.15 0.01 260);
-  --primary: oklch(48.8% 0.243 264.376);
+  --primary: #00586B;
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.95 0.01 260);
+  --secondary: oklch(0.92 0.02 160); 
   --secondary-foreground: oklch(0.15 0.01 260);
   --muted: oklch(0.92 0.005 260);
   --muted-foreground: oklch(0.45 0.01 260);
-  --accent: oklch(0.55 0.24 250);
+  --accent: #98E7E5;
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
@@ -48,7 +48,7 @@
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.1 0.01 260);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(48.8% 0.243 264.376);
+  --primary: #00586B;
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.15 0.01 260);
   --secondary-foreground: oklch(0.98 0 0);
@@ -58,7 +58,7 @@
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.25 0.02 260);
+  --border: oklch(30.919% 0.00004 271.152 / 0.52);
   --input: oklch(0.15 0.01 260);
   --ring: oklch(0.65 0.24 250);
   --chart-1: oklch(0.65 0.24 250);
@@ -77,7 +77,7 @@
 }
 
 @theme inline {
-  --font-sans: "Inter", "Inter Fallback";
+  --font-sans: "Poppins";
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -440,7 +440,7 @@ dialog::backdrop {
 }
 
 .fancy-button {
-  --color: #1e1eda;
+  --color: #00586B;
   --radius: 10px;
   --rotate: 90deg;
   --animation-duration: 0s;
@@ -474,7 +474,7 @@ dialog::backdrop {
   background: conic-gradient(
     from var(--rotate),
     transparent 12deg,
-    rgb(85, 90, 223) 360deg
+    #98E7E5 360deg
   );
   inset: 0;
   animation: rotate var(--animation-duration) linear infinite both;

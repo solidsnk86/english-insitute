@@ -9,6 +9,7 @@ import { Marquee } from "@/components/marquee";
 import { Pricing } from "@/components/pricing";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import {WhyUs} from "@/components/why-us";
+import { GoogleMap } from "@/components/google-map";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Pricing />
       <WhyUs />
       <ContactForm />
+      <GoogleMap />
       <Footer />
       <WhatsAppButton />
     </main>

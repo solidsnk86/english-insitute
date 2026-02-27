@@ -57,14 +57,11 @@ export function Footer() {
             <Link href="/" className="flex items-center">
               <Image
                   className="bg-transparent"
-                  src="/logo-mundo.png"
-                  width={45}
-                  height={45}
+                  src="/logo-instituto.png"
+                  width={90}
+                  height={90}
                   alt="Instituto Inglés Logo"
                 />
-                <span className="font-bold text-xl text-[#99E7E6] text-shadow-2xs text-shadow-black -translate-y-0.5 tracking-widest" style={{ fontFamily: fraunces.className }}>
-                  IIII
-                </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Academia de inglés con cursos presenciales y online, docentes
@@ -130,19 +127,19 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
                 <a
-                  href="mailto:contacto@institutoingles.com"
+                  href="mailto:mcristinaherrera20@gmail.com"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  contacto@institutoingles.com
+                  mcristinaherrera20@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
                 <a
-                  href="tel:+54-9-2665-000000"
+                  href="tel:+5492604405974"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  +54 9 2665 000000
+                  +54 9 2604 405974
                 </a>
               </li>
             </ul>
@@ -154,7 +151,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
-              © {new Date().getFullYear()} Instituto Inglés. Todos los derechos reservados.
+              © {new Date().getFullYear()} Instituto Integral del Idioma Inglés. Todos los derechos reservados.
             </p>
 
             {/* Legal Links */}

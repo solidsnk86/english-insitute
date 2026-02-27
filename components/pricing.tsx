@@ -9,7 +9,7 @@ const pricingPlans = [
   {
     name: "Cursos para niños",
     description: "Programa lúdico y comunicativo para edades tempranas",
-    price: "ARS 32.000 / mes",
+    price: "Consultar Precio",
     currency: "",
     popular: false,
     features: [
@@ -22,7 +22,7 @@ const pricingPlans = [
   {
     name: "Cursos para adolescentes",
     description: "Desarrollo de habilidades académicas y conversación",
-    price: "ARS 34.000 / mes",
+    price: "Consultar Precio",
     currency: "",
     popular: false,
     features: [
@@ -34,7 +34,7 @@ const pricingPlans = [
   {
     name: "Cursos para adultos",
     description: "Clases prácticas para mejorar fluidez y confianza",
-    price: "ARS 60.000 / mes",
+    price: "Consultar Precio",
     currency: "",
     popular: true,
     features: [
@@ -46,7 +46,7 @@ const pricingPlans = [
   {
     name: "Preparación de exámenes",
     description: "Cursos intensivos para IELTS, TOEFL y Cambridge",
-    price: "ARS 20.000 / curso",
+    price: "Consultar Precio",
     currency: "",
     popular: false,
     features: [
@@ -153,7 +153,7 @@ export function Pricing() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-            Planes y Cuotas
+            Planes Mensuales
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance">
             Opciones pensadas para cada edad y necesidad

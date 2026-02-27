@@ -19,7 +19,7 @@ export const FancyButton = ({
   duration = 2,
   radius = 10,
   inset = 1,
-  fancyColor = "#757575",
+  fancyColor = "#98E7E5",
   isLink = false,
   linkURL,
   ...props

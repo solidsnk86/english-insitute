@@ -87,7 +87,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="fixed top-4 md:left-8 md:right-8 left-3 right-3 rounded-xl z-50 bg-white/60 dark:bg-black/50 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800 shadow-lg dark:shadow-2xl dark:shadow-slate-900/80">
+    <header className="fixed top-4 md:left-8 md:right-8 left-3 right-3 rounded-xl z-50 bg-white/60 dark:bg-black/50 backdrop-blur-lg border-b border-border shadow-lg dark:shadow-2xl dark:shadow-slate-900/80">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Mobile Menu Button */}
@@ -118,7 +118,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+                className="text-muted-foreground font-semibold hover:text-foreground transition-colors text-sm font-medium"
               >
                 {link.label}
               </Link>
@@ -131,7 +131,7 @@ export function Header() {
             <div className="w-44">
               <Link
                 href="/admin"
-                className=" text-sm font-bold text-foreground hover:text-primary transition-colors"
+                className=" text-sm font-semibold text-foreground hover:text-primary transition-colors"
               >
                 Ingresar
               </Link>
@@ -143,7 +143,6 @@ export function Header() {
               linkURL="/admin/register"
               inset={1}
               duration={3}
-              fancyColor="#4f39f6"
               className="w-full py-2 px-2 justify-center text-center"
             >
               <span className="relative">Inscribirme</span>
@@ -165,10 +164,6 @@ export function Header() {
                   {link.label}
                 </a>
               ))}
-              <div className="flex gap-2 items-center justify-center text-2xl font-medium text-muted-foreground">
-                <p>{theme === "dark" ? "Modo oscuro" : "Modo claro"}</p>
-                <ThemeToggle />
-              </div>
               <Button
                 variant={"secondary"}
                 className="mt-2 text-2xl hover:brightness-125 rounded-md border"
@@ -180,7 +175,7 @@ export function Header() {
               <FancyButton
                 inset={1}
                 duration={3}
-                fancyColor="#4f39f6"
+                fancyColor="#98E7E5"
                 className="w-[100%] py-2 px-2 justify-center text-center"
               >
                 <a href="#contacto" className="relative">

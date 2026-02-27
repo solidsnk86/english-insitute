@@ -109,8 +109,8 @@ export function ContactForm() {
 
   return (
     <section id="contacto" className={`relative`}>
-      <div className="absolute bottom-0 left-5.5 w-80 h-80 bg-blue-400/30 dark:bg-blue-950 rotate-120 animate-aurora drop-shadow-2xl drop-shadow-blue-600 blur-3xl -z-50" />
-      <div className="absolute top-[50%] animate-pulse animation-duration-[10s] right-5.5 w-44 h-44 bg-blue-400/30 dark:bg-blue-950 rotate-120 drop-shadow-2xl drop-shadow-blue-600 blur-3xl -z-50 bg-animate" />
+      <div className="absolute bottom-0 left-5.5 w-80 h-80 bg-primary/30 dark:bg-primary rotate-120 animate-aurora drop-shadow-2xl drop-shadow-primary/50 blur-3xl -z-50" />
+      <div className="absolute top-[50%] animate-pulse animation-duration-[10s] right-5.5 w-44 h-44 bg-primary/30 dark:bg-primary rotate-120 drop-shadow-2xl drop-shadow-primary/50 blur-3xl -z-50 bg-animate" />
 
       <div className="container mx-auto px-4 z-50">
         <div className="max-w-2xl mx-auto">
@@ -118,7 +118,7 @@ export function ContactForm() {
             <div className="absolute bg-primary/20 rounded-full w-56 h-56 -top-2 left-[50%] -translate-x-[50%] blur-2xl animate-ping animation-duration-[3s]" />
             <Image
               className="shadow-black drop-shadow-2xl hover:scale-110 transition-transform duration-400"
-              src="/envelope.png"
+              src="/envelope-contact.png"
               width={200}
               height={200}
               alt="Envelope image"
@@ -130,10 +130,10 @@ export function ContactForm() {
               Contacto
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance">
-              Hablemos de la inscripción
+              Consulta sobre precios disponibles
             </h2>
             <p className="text-muted-foreground text-pretty">
-              ¿Porqué aprenderlo con nosotros?
+              Te acompañamos con clases claras, prácticas y enfocadas en resultados reales.
             </p>
           </div>
 
@@ -173,7 +173,7 @@ export function ContactForm() {
             />
 
             <button
-              className="group relative flex items-center justify-center rounded-lg overflow-hidden whitespace-nowrap mt-1 h-12 bg-linear-to-b from-blue-700 to-blue-800 w-full px-6 md:ml-1 md:mt-0 bg-gradient-to-b from-primary-500 to-primary-600 text-base/none text-white transition-all duration-300 ease-in-out active:translate-y-px active:bg-primary/30 from-primary-500 via-primary-600 to-primary-800 shadow-xl shadow-primary-500/5 ring-offset-slate-700 focus:ring-primary/50 md:h-11 md:ring-offset-gray-900 hover:shadow-2xl hover:shadow-primary/50 hover:brightness-125"
+              className="group relative flex items-center justify-center rounded-lg overflow-hidden whitespace-nowrap mt-1 h-12 bg-linear-to-b from-primary/80 to-primary w-full px-6 md:ml-1 md:mt-0 bg-gradient-to-b from-primary-500 to-primary-600 text-base/none text-white transition-all duration-300 ease-in-out active:translate-y-px active:bg-primary/30 from-primary-500 via-primary-600 to-primary-800 shadow-xl shadow-primary-500/5 ring-offset-slate-700 focus:ring-primary/50 md:h-11 md:ring-offset-gray-900 hover:shadow-2xl hover:shadow-primary/50 hover:brightness-125"
               type="submit"
             >
               <span className="absolute">

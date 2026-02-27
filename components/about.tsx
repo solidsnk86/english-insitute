@@ -22,7 +22,7 @@ export const About = () => {
       // Animción del card
       gsap.from(".about-card", {
         opacity: 0,
-        y: 10,
+        y: 20,
         duration: 0.4,
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -33,7 +33,7 @@ export const About = () => {
       // Animación del badge
       gsap.from(".about-badge", {
         opacity: 0,
-        y: 20,
+        y: 40,
         duration: 0.6,
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -44,7 +44,7 @@ export const About = () => {
       // Animación del título
       gsap.from(titleRef.current, {
         opacity: 0,
-        y: 40,
+        y: 60,
         duration: 0.8,
         delay: 0.2,
         scrollTrigger: {
@@ -100,10 +100,10 @@ export const About = () => {
       </div>
 
       {/* Texto derecha */}
-      <div className="text-left space-y-4">
-        <span className="about-badge text-primary text-sm font-semibold tracking-wider uppercase">
+      <div className="text-left space-y-4 px-4">
+        <p className="about-badge text-primary text-sm font-semibold tracking-wider uppercase mb-3">
           Sobre nosotros
-        </span>
+        </p>
 
         <p className="text-muted-foreground text-pretty">
           El Instituto Integral del Idioma Inglés inició su actividad en 1974, fundado por la profesora María Cristina Herrera como un emprendimiento unipersonal. Con el paso del tiempo, creció hasta convertirse en uno de los institutos de enseñanza de inglés más destacados de San Rafael.
