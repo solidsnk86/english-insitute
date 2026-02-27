@@ -152,7 +152,7 @@ export function Projects() {
               >
                 <ChevronLeft
                   size={24}
-                  className="group-hover:text-blue-400 transition-colors"
+                  className="group-hover:text-teal-400 transition-colors"
                 />
               </button>
               <div className="font-mono mx-auto inline-flex justify-center">
@@ -169,7 +169,7 @@ export function Projects() {
               >
                 <ChevronRight
                   size={24}
-                  className="group-hover:text-blue-400 transition-colors"
+                  className="group-hover:text-teal-400 transition-colors"
                 />
               </button>
             </div>
