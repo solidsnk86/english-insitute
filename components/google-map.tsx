@@ -11,7 +11,7 @@ export const GoogleMap = ( ) => {
               Empezá hoy tu camino a inglés
             </h2>
             <p className="text-muted-foreground text-pretty">
-              Estamos ubicados en la calle Maza 621 entre Avenida Colón y Segovia
+              Estamos ubicados en la calle Maza 621 entre Avenida Colón y Segovia.
             </p>
           </div>
             <iframe 
