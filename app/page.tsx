@@ -32,10 +32,31 @@ export default function HomePage() {
           scrollTrigger: { trigger: t, start: "top 80%" },
         };
 
+        // Title animation
         if (dir === "left") gsap.from(t, { ...base, x: -80 });
         else if (dir === "right") gsap.from(t, { ...base, x: 80 });
         else if (dir === "top") gsap.from(t, { ...base, y: -60 });
         else gsap.from(t, { ...base, y: 60 });
+
+        // Animate following header children (paragraphs, subtitles) with stagger
+        const header = t.closest(".text-center") || t.parentElement;
+        if (header) {
+          const children = Array.from(header.children) as HTMLElement[];
+          const idx = children.indexOf(t as HTMLElement);
+          const following = idx >= 0 ? children.slice(idx + 1) : [];
+
+          if (following.length) {
+            gsap.from(following, {
+              opacity: 0,
+              y: 24,
+              duration: 0.7,
+              ease: "power2.out",
+              stagger: 0.15,
+              delay: 0.2,
+              scrollTrigger: { trigger: t, start: "top 80%" },
+            });
+          }
+        }
       });
     }, rootRef);
 

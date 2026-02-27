@@ -8,7 +8,7 @@ export const GoogleMap = ( ) => {
               Donde encontrarnos
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance section-title" data-anim="left">
-              Empezá hoy tu camino en el inglés
+              Empezá hoy tu camino a inglés
             </h2>
             <p className="text-muted-foreground text-pretty">
               Estamos ubicados en la calle Maza 621 entre Avenida Colón y Segovia
