@@ -11,7 +11,6 @@ import { ArrowLeft, Calendar, ExternalLink, Share } from "lucide-react";
 import { share } from "@/lib/share";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 
 export const ProjectClient = ({ id }: { id: string }) => {
@@ -44,10 +43,8 @@ export const ProjectClient = ({ id }: { id: string }) => {
   }
 
   return (
-    <>
-      <Header />
       <section className="">
-        <article className="container mx-auto px-4 max-w-4xl mt-20 md:mt-24">
+        <article className="container mx-auto px-2 max-w-4xl mt-20 md:mt-24">
           {/* Breadcrumbs */}
           <nav className="mb-4" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -62,7 +59,7 @@ export const ProjectClient = ({ id }: { id: string }) => {
                   href="/#proyectos"
                   className="hover:text-primary transition-colors"
                 >
-                  Proyectos
+                  Publicaiones
                 </Link>
               </li>
               <span className="mx-1">&#8250;</span>
@@ -211,7 +208,5 @@ export const ProjectClient = ({ id }: { id: string }) => {
           </section>
         </article>
       </section>
-      <Footer />
-    </>
   );
 };
