@@ -130,7 +130,7 @@ export function ContactForm() {
               Contacto
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance section-title" data-anim="bottom">
-              Consulta sobre precios disponibles
+              Consulta sobre cupos disponibles
             </h2>
             <p className="text-muted-foreground text-pretty">
               Te acompañamos con clases claras, prácticas y enfocadas en resultados reales.
