@@ -69,9 +69,9 @@ export default function HomePage() {
       <Hero />
       <About />
       <Services />
-      <Marquee />
       <Projects />
       <Pricing />
+      <Marquee />
       <WhyUs />
       <ContactForm />
       <GoogleMap />
