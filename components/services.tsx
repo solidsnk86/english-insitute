@@ -59,10 +59,10 @@ export function Services() {
         <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Efecto de background superior */}
           <div className="absolute -left-50 -top-25 w-120 h-120 rounded-full blur-3xl bg-teal-500/10 dark:bg-teal-800/20 opacity-40"></div>
-          <div className="absolute -left-14 top-7 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-500/25 opacity-40"></div>
+          <div className="absolute -left-14 top-7 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-700/25 opacity-40"></div>
           {/* Efecto de background inferior */}
           <div className="absolute -right-50 -bottom-25 w-120 h-120 rounded-full blur-3xl bg-teal-500/10 dark:bg-teal-800/20 opacity-50 dark:opacity-30"></div>
-          <div className="absolute -right-14 bottom-1 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-600/25 opacity-50 dark:opacity-30"></div>
+          <div className="absolute -right-14 bottom-1 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-700/25 opacity-50 dark:opacity-30"></div>
           {services.map((service) => (
             <Card
               key={service.title}
@@ -77,7 +77,7 @@ export function Services() {
                   border border-border dark:group-hover:border-t-blue-100/70 dark:group-hover:border-l-blue-100/30 dark:group-hover:border-r-blue-100/30 dark:group-hover:border-b-blue-100/15 
                   transition-colors group-hover:shadow-black shadow-2xl btn-animation`}
                 >
-                  <service.icon className="w-6 h-6 text-primary dark:group-hover:text-blue-400 card-icon svg-animation" />
+                  <service.icon className="w-6 h-6 text-primary dark:group-hover:text-teal-400 card-icon svg-animation" />
                 </div>
                 <h3 className="text-muted-foreground transition-colors duration-150 text-lg font-semibold mb-2 card-title">
                   {service.title}

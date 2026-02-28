@@ -40,34 +40,6 @@ export const About = () => {
           start: "top 70%",
         },
       });
-
-      // Animación del título
-      gsap.from(titleRef.current, {
-        opacity: 0,
-        y: 60,
-        duration: 0.8,
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-      });
-
-      // Animación de los párrafos (stagger)
-      if (paragraphsRef.current) {
-        const paragraphs = paragraphsRef.current.querySelectorAll("p");
-        gsap.from(paragraphs, {
-          opacity: 0,
-          y: 30,
-          duration: 0.6,
-          stagger: 0.2,
-          delay: 0.4,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();

@@ -17,7 +17,7 @@ export default function AdminLayout({
       {/* Aurora Background Effect */}
       <div className="absolute top-1/4 -left-1/4 w-150 h-150 bg-primary/30 dark:bg-primary/70 rounded-full blur-[120px] animate-aurora opacity-80" />
       <div
-        className="absolute bottom-1/4 -right-1/4 w-125 h-125 bg-primary/25 dark:bg-primary/60 rounded-full blur-[100px] animate-aurora"
+        className="absolute bottom-1/4 -right-1/4 w-125 h-125 bg-primary/25 dark:bg-primary/60 rounded-full blur-[100px] animate-aurora opacity-70"
         style={{ animationDelay: "-4s" }}
       />
 

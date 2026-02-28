@@ -29,7 +29,7 @@ export default function HomePage() {
           opacity: 0,
           duration: 0.8,
           ease: "power2.out",
-          scrollTrigger: { trigger: t, start: "top 80%" },
+          scrollTrigger: { trigger: t, start: "top 80%", once: true },
         };
 
         // Title animation
@@ -53,7 +53,7 @@ export default function HomePage() {
               ease: "power2.out",
               stagger: 0.15,
               delay: 0.2,
-              scrollTrigger: { trigger: t, start: "top 80%" },
+              scrollTrigger: { trigger: t, start: "top 80%", once: true },
             });
           }
         }

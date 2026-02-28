@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { getSupabase } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
+import { toast } from "sonner";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -45,6 +46,7 @@ export function RegisterForm() {
         return;
       }
 
+      toast.success(`Se ha enviado un correo de confirmación a ${email}`)
       router.push("/admin");
       router.refresh();
     } catch (error) {
