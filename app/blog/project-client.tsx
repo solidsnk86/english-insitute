@@ -26,15 +26,15 @@ export const ProjectClient = ({ id }: { id: string }) => {
       <section className="min-h-screen pt-24 pb-16 flex items-center justify-center">
         <div className="text-center space-y-4">
           <h2 className="text-2xl font-bold text-foreground">
-            Proyecto no encontrado
+            Publicación no encontrado
           </h2>
           <p className="text-muted-foreground">
-            El proyecto que buscás no existe o fue eliminado.
+            La publicación que buscás no existe o fue eliminada.
           </p>
           <Button asChild>
             <Link href="/#proyectos">
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Volver a proyectos
+              Volver a publicaciones
             </Link>
           </Button>
         </div>
@@ -59,7 +59,7 @@ export const ProjectClient = ({ id }: { id: string }) => {
                   href="/#proyectos"
                   className="hover:text-primary transition-colors"
                 >
-                  Publicaiones
+                  Publicaciones
                 </Link>
               </li>
               <span className="mx-1">&#8250;</span>

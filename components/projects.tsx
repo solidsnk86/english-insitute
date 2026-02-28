@@ -81,7 +81,7 @@ export function Projects() {
                     <SwiperSlide key={project.id}>
                       <Link
                         id={`project-${i}`}
-                        href={`/project/${project.id}`}
+                        href={`/blog/${project.id}`}
                         key={project.id}
                         className="h-125 w-full bg-white/5 dark:bg-card/50 relative border border-border rounded-xl transition-all duration-300 group overflow-hidden hover:shadow-lg dark:hover:shadow-none"
                       >
