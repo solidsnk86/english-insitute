@@ -105,6 +105,14 @@ export const About = () => {
           Sobre nosotros
         </p>
 
+        <h2
+          ref={titleRef}
+          className="text-3xl lg:text-4xl font-bold leading-tight section-title"
+          data-anim="right"
+        >
+          Lo que necesitas saber
+        </h2>
+
         <p className="text-muted-foreground text-pretty">
           El Instituto Integral del Idioma Inglés inició su actividad en 1974, fundado por la profesora María Cristina Herrera como un emprendimiento unipersonal. Con el paso del tiempo, creció hasta convertirse en uno de los institutos de enseñanza de inglés más destacados de San Rafael.
         </p>
