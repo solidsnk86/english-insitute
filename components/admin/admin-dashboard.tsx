@@ -3,15 +3,13 @@
 import { useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import {
-  FolderKanban,
   Mail,
   LogOut,
   X,
   Home,
   BarChart3,
-  CalendarClock,
   Crown,
-  Text,
+  NewspaperIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSupabase } from "@/lib/supabase";
@@ -22,20 +20,17 @@ import { AnalyticsManager } from "./analytics-manager";
 import { AppointmentsManager } from "./appointments-manager";
 import { useMessages } from "@/app/contexts/use-messages";
 import Link from "next/link";
-import { useAppointments } from "@/app/contexts/use-appointments";
 
 type TabType = "projects" | "messages" | "analytics" | "home" | "appointments";
 
 const tabs = [
-  { id: "projects" as TabType, label: "Proyectos", icon: FolderKanban },
+  { id: "projects" as TabType, label: "Publicaciones", icon: NewspaperIcon },
   { id: "messages" as TabType, label: "Mensajes", icon: Mail },
-  { id: "appointments" as TabType, label: "Turnos", icon: CalendarClock },
   { id: "analytics" as TabType, label: "Analytics", icon: BarChart3 },
 ];
 
 export function AdminDashboard({ user }: { user: User }) {
   const { getMessages, notReadMessages } = useMessages();
-  const { appointments, confirmedAppointmentsToday } = useAppointments();
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabType>("projects");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -119,9 +114,9 @@ export function AdminDashboard({ user }: { user: User }) {
               </div>
               <div>
                 <span className="font-bold text-xl text-foreground">
-                  Studio
-                  <span className="bg-clip-text text-transparent bg-linear-120 from-blue-400 via-blue-600 to-blue-700">
-                    Neo
+                  Instituto
+                  <span className="bg-clip-text text-transparent bg-linear-120 from-teal-500 via-teal-800 to-teal-900">
+                    Inglés
                   </span>
                 </span>
                 <p className="text-xs text-muted-foreground">Panel Admin</p>
@@ -141,7 +136,7 @@ export function AdminDashboard({ user }: { user: User }) {
               <li>
                 <Link
                   href="/"
-                  className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-blue-700/20 text-primary-foreground hover:text-foreground"
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-teal-700/10 hover:text-foreground"
                 >
                   <Home className="w-5 h-5" />
                   <span>Inicio</span>
@@ -157,7 +152,7 @@ export function AdminDashboard({ user }: { user: User }) {
                     className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors relative ${
                       activeTab === tab.id
                         ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-blue-700/20 hover:text-foreground"
+                        : "text-muted-foreground hover:bg-teal-700/10 hover:text-foreground"
                     }`}
                   >
                     <div className="relative">
@@ -174,22 +169,10 @@ export function AdminDashboard({ user }: { user: User }) {
                           </>
                         ) : null
                       ) : null}
-                      {tab.id === "appointments" ? (
-                        confirmedAppointmentsToday.length < 0 ? (
-                          <>
-                            <div
-                              className={`absolute -top-2 -left-1.5 w-4 h-4 text-[11px] grid items-center bg-linear-to-br from-red-400 to-red-600 rounded-full text-white z-50`}
-                            >
-                              <small>{confirmedAppointmentsToday.length}</small>
-                            </div>
-                            <div className="absolute sonner -top-2.25 -left-1.75 w-4 h-4 bg-red-400 rounded-full" />
-                          </>
-                        ) : null
-                      ) : null}
-                    </div>
+                    </div>  
                     <span>{tab.label}</span>
                     {tab.id === "analytics" ? (
-                      <div className="absolute top-4 right-3 text-[10px] bg-linear-to-b from-blue-600 to-blue-800 border border-blue-600 rounded-full text-white px-2">
+                      <div className="absolute top-4 right-3 text-[10px] bg-linear-to-b from-teal-600 to-teal-800 border border-teal-600 rounded-full text-white px-2">
                         <div className="flex gap-1 items-center">
                           <span className="font-semibold tracking-widest">
                             PRO

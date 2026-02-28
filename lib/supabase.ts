@@ -13,18 +13,6 @@ export function getSupabase(): Promise<SupabaseClient> {
   return supabaseInstance;
 }
 
-export type Project = {
-  id: string;
-  title: string;
-  description: string;
-  image_url: string;
-  tags: string;
-  link: string | null;
-  featured: boolean;
-  created_at: string;
-  project_url: string;
-};
-
 export type ContactMessage = {
   id: string;
   name: string;

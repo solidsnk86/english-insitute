@@ -21,8 +21,8 @@ const navLinks = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { ip, city, country, sysInfo } = useLocation();
-  const { theme } = useTheme();
+  // const { ip, city, country, sysInfo } = useLocation();
+  // const { theme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -46,45 +46,45 @@ export function Header() {
     }
   };
 
-  const sendDataLocation = useCallback(async () => {
-    const supabase = await getSupabase();
-    const currentIp = ip;
+  // const sendDataLocation = useCallback(async () => {
+  //   const supabase = await getSupabase();
+  //   const currentIp = ip;
 
-    try {
-      const { data, error } = await supabase
-        .from("sn_visitors")
-        .select("*")
-        .order("created_at", { ascending: false })
-        .limit(1);
+  //   try {
+  //     const { data, error } = await supabase
+  //       .from("sn_visitors")
+  //       .select("*")
+  //       .order("created_at", { ascending: false })
+  //       .limit(1);
 
-      if (error) {
-        throw new Error(error.message);
-      }
+  //     if (error) {
+  //       throw new Error(error.message);
+  //     }
 
-      const lastIp = data[0].ip;
+  //     const lastIp = data[0].ip;
 
-      if (lastIp !== currentIp) {
-        setTimeout(async () => {
-          await fetch("/api/analytics", {
-            method: "POST",
-            headers: { "Content-Type": "aplication/json" },
-            body: JSON.stringify({
-              ip,
-              city: city.name,
-              country: country.name,
-              sysInfo,
-            }),
-          }).catch((err) => console.error(err));
-        }, 900);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+  //     if (lastIp !== currentIp) {
+  //       setTimeout(async () => {
+  //         await fetch("/api/analytics", {
+  //           method: "POST",
+  //           headers: { "Content-Type": "aplication/json" },
+  //           body: JSON.stringify({
+  //             ip,
+  //             city: city.name,
+  //             country: country.name,
+  //             sysInfo,
+  //           }),
+  //         }).catch((err) => console.error(err));
+  //       }, 900);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    sendDataLocation();
-  }, []);
+  // useEffect(() => {
+  //   sendDataLocation();
+  // }, []);
 
   return (
     <header className="fixed top-4 md:left-8 md:right-8 left-3 right-3 rounded-xl z-50 bg-white/60 dark:bg-black/50 backdrop-blur-lg border-b border-border shadow-lg dark:shadow-2xl dark:shadow-slate-900/80">

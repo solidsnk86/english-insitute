@@ -17,7 +17,7 @@ export const BackButton = ({ ...props }: BackButtonProps) => {
     return "/";
   };
 
-  return (
+  return pathname !== "/admin" ? (
     <button className="absolute top-4 left-4" {...props}>
       <Link
         href={validatePathname(pathname)}
@@ -27,5 +27,5 @@ export const BackButton = ({ ...props }: BackButtonProps) => {
         <div className="text-md font-bold text-white">Volver</div>
       </Link>
     </button>
-  );
+  ) : null;
 };

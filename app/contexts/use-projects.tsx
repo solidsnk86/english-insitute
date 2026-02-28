@@ -1,6 +1,6 @@
 "use client";
 
-import { getSupabase, type Project } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import {
   createContext,
   ReactNode,
@@ -9,6 +9,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { type Project } from "../types/definitions";
 
 type ProjectsContextType = {
   projects: Project[];

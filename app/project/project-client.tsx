@@ -1,8 +1,7 @@
 "use client";
 
-import { Project } from "@/lib/supabase";
 import { useProjects } from "../contexts/use-projects";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "../utils/format-date";
@@ -85,7 +84,7 @@ export const ProjectClient = ({ id }: { id: string }) => {
           </div>
 
           {/* Tags */}
-          {projectData.tags.length > 0 && (
+          {projectData.tags && projectData.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-4">
               {projectData.tags.split(",").map((tag) => (
                 <Badge
@@ -112,7 +111,7 @@ export const ProjectClient = ({ id }: { id: string }) => {
 
           {/* Descripción */}
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            {projectData.description}
+            {projectData.long_description}
           </p>
 
           <div className="flex gap-3 items-center">

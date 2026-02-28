@@ -19,11 +19,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { getSupabase, type Project } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import { useProjects } from "@/app/contexts/use-projects";
 import { closeDialog, showDialog } from "../showDialog";
 import { toast } from "sonner";
 import Image from "next/image";
+import { Project } from "@/app/types/definitions";
 
 type ProjectFormData = {
   title: string;
@@ -186,7 +187,7 @@ export function ProjectsManager() {
       title: "Eliminar Proyecto",
       content: (
         <div className="pt-2 pb-2">
-          <p>¿Estás seguro de que quieres eliminar este proyecto?</p>
+          <p className="text-black dark:text-white">¿Estás seguro de que quieres eliminar este proyecto?</p>
           <div className="flex justify-center mx-auto gap-4 mt-2">
             <button
               className="px-6 py-2  border border-zinc-border rounded-md bg-red-400/70 active:scale-90 hover:opacity-90 hover:outline-offset-1 hover:outline-1 hover:outline-zinc-600"
@@ -211,16 +212,16 @@ export function ProjectsManager() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8 sticky">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Proyectos</h1>
+          <h1 className="text-2xl font-bold text-foreground">Publicaciones</h1>
           <p className="text-muted-foreground">
-            Gestiona los proyectos del portafolio
+            Gestiona los blogs del instituto 
           </p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button onClick={openCreateDialog}>
               <Plus className="w-4 h-4 mr-2" />
-              Nuevo Proyecto
+              Nuevo Publicación
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">

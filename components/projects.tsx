@@ -16,7 +16,8 @@ export function Projects() {
     swiperRef ? swiperRef?.activeIndex + 1 : 1,
   );
 
-  const featuredProjects: any = []
+  const featuredProjects = Array.isArray(projects) ? 
+  projects.filter((project) => project.featured === true) : []
 
   return (
     <section id="proyectos" className="relative">
@@ -24,13 +25,13 @@ export function Projects() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-            Casos de éxito
+            Sección Blog
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance section-title" data-anim="right">
             Que dicen nuestros alumnos
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Una selección de nuestros alumnos más recientes y exitosos casos.
+            Una selección de nuestros articulos más recientes.
           </p>
         </div>
 
@@ -58,7 +59,7 @@ export function Projects() {
           </div>
         ) : projects.length === 0 ? (
           <div className="text-center text-muted-foreground py-12">
-            No hay proyectos disponibles actualmente.
+            <p>No hay proyectos disponibles actualmente.</p>
           </div>
         ) : (
           <div>
