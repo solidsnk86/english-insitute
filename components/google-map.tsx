@@ -1,6 +1,6 @@
 export const GoogleMap = ( ) => {
     return (
-        <div className="flex justify-center pt-24">
+        <div className="flex justify-center pt-24 px-3">
                {/* Section Header */}
           <div>
             <div className="text-center mb-12">
