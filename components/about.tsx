@@ -46,33 +46,33 @@ export const About = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="acerca" className="relative p-4">
-  <div className="absolute top-14 left-1/2 rounded-full bg-primary/50 w-56 h-56 blur-3xl" />
+  <section ref={sectionRef} id="acerca" className="relative p-4">
+   <div className="absolute top-14 left-1/2 rounded-full bg-primary/50 w-56 h-56 blur-3xl" />
 
-  <div
+   <div
     ref={aboutRef}
-    className="about-card container mx-auto border border-border rounded-xl backdrop-blur-2xl bg-white/50 dark:bg-card/30 overflow-hidden p-4 lg:p-0"
-  >
-    <div className="grid lg:grid-cols-2 gap-6 items-center">
+    className="about-card container mx-auto border border-border rounded-xl backdrop-blur-2xl bg-white/50 dark:bg-card/30 overflow-hidden"
+   >
+    <div className="grid lg:grid-cols-2 gap-0 md:gap-6 items-center">
       
       {/* Visual element */}
           <div className="relative">
             <div className="aspect-square">
          
-                <div className="flex items-center justify-center z-10">
+                <div className="absolute top-0 left-0 w-full h-full md:flex items-center justify-center z-10">
                   <Image
                     src={"/foto-instituto.jpeg"}
                     alt=""
                     fill
-                    className="w-full h-full relative object-cover rounded-xl md:rounded-none"
+                    className="w-full h-full relative object-cover"
                   />
-
               </div>
+              
             </div>
       </div>
 
       {/* Texto derecha */}
-      <div className="text-left space-y-4 px-4">
+      <div className="text-left space-y-4 p-8">
         <p className="about-badge text-primary text-sm font-semibold tracking-wider uppercase mb-3">
           Sobre nosotros
         </p>
@@ -82,7 +82,7 @@ export const About = () => {
           className="text-3xl lg:text-4xl font-bold leading-tight section-title"
           data-anim="right"
         >
-          Lo que necesitas saber
+         Más de 50 años formando en inglés
         </h2>
 
         <p className="text-muted-foreground text-pretty">
