@@ -11,7 +11,6 @@ import { ArrowLeft, Calendar, ExternalLink, Share } from "lucide-react";
 import { share } from "@/lib/share";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import { Header } from "@/components/header";
 
 export const ProjectClient = ({ id }: { id: string }) => {
   const { getProjectById, projects } = useProjects();
@@ -19,7 +18,7 @@ export const ProjectClient = ({ id }: { id: string }) => {
 
   const projectData = getProjectById(id);
   // Obtener proyectos relacionados (otros proyectos, excluyendo el actual)
-  const relatedProjects = projects.filter((p) => p.id !== id).slice(0, 3);
+  const relatedProjects = Array.isArray(projects) ? projects.filter((p) => p.id !== id).slice(0, 3) : [];
 
   if (!projectData) {
     return (
@@ -44,7 +43,7 @@ export const ProjectClient = ({ id }: { id: string }) => {
 
   return (
       <section className="">
-        <article className="container mx-auto px-2 max-w-4xl mt-20 md:mt-24">
+        <article className="container mx-auto px-2 max-w-4xl mt-24 md:mt-28">
           {/* Breadcrumbs */}
           <nav className="mb-4" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -145,11 +144,13 @@ export const ProjectClient = ({ id }: { id: string }) => {
           </div>
 
           {/* Proyectos destacados */}
-          <div className="text-center py-4">
+          {relatedProjects.length > 0 && (
+            <div className="text-center py-4">
             <span className="text-primary text-sm font-semibold tracking-wider uppercase">
               Otros Proyectos
             </span>
           </div>
+          )}
 
           <section className="mb-8 gap-3 overflow-x-hidden">
             <Swiper

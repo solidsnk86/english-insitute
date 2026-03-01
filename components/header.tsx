@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, Text, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { getSupabase } from "@/lib/supabase";
@@ -86,6 +86,50 @@ export function Header() {
   //   sendDataLocation();
   // }, []);
 
+  if (isMenuOpen) {
+    return (
+          <div className="absolute top-0 left-0 w-full h-full z-50 bg-zinc-950/50">
+            <div className={`fixed top-0 left-0 w-full h-dvh transition-transform duration-900 ${isMenuOpen ? "translate-y-0" : "translate-y-[100%]"}`}>
+               <nav className="md:hidden h-dvh items-center backdrop-blur-2xl grid z-50 relative">
+                <button onClick={handleMenuIsOpen} className="absolute top-9 left-9 outline-4 outline-primary/30 p-1 rounded-md">
+                  <X size={26} className="z-50" />
+                </button>
+              <div className="flex flex-col text-center gap-4 p-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors text-2xl font-medium py-2"
+                  onClick={handleMenuIsOpen}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <Button
+                variant={"secondary"}
+                className="mt-2 text-2xl hover:brightness-125 rounded-md border"
+              >
+                <Link href="/admin" onClick={handleMenuIsOpen}>
+                  Ingresar
+                </Link>
+              </Button>
+              <FancyButton
+                inset={1}
+                duration={3}
+                fancyColor="#98E7E5"
+                className="w-[100%] py-2 px-2 justify-center text-center"
+              >
+                <a href="#contacto" className="relative">
+                  Inscribirme
+                </a>
+              </FancyButton>
+            </div>
+          </nav>
+            </div>
+        </div>
+        )
+  }
+
   return (
     <header className="fixed top-4 md:left-8 md:right-8 left-3 right-3 rounded-xl z-50 bg-white/60 dark:bg-black/50 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4">
@@ -96,7 +140,7 @@ export function Header() {
             onClick={handleMenuIsOpen}
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <Text size={24} />
           </button>
 
           {/* Logo */}
@@ -149,42 +193,6 @@ export function Header() {
             </FancyButton>
           </div>
         </div>
-
-        {/* Mobile Nav */}
-        {isMenuOpen && (
-          <nav className="md:hidden items-center h-dvh grid z-50 relative">
-            <div className="flex flex-col text-center gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors text-2xl font-medium py-2"
-                  onClick={handleMenuIsOpen}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <Button
-                variant={"secondary"}
-                className="mt-2 text-2xl hover:brightness-125 rounded-md border"
-              >
-                <Link href="/admin" onClick={handleMenuIsOpen}>
-                  Ingresar
-                </Link>
-              </Button>
-              <FancyButton
-                inset={1}
-                duration={3}
-                fancyColor="#98E7E5"
-                className="w-[100%] py-2 px-2 justify-center text-center"
-              >
-                <a href="#contacto" className="relative">
-                  Inscribirme
-                </a>
-              </FancyButton>
-            </div>
-          </nav>
-        )}
       </div>
     </header>
   );

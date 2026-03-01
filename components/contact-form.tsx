@@ -109,8 +109,8 @@ export function ContactForm() {
 
   return (
     <section id="contacto" className={`relative`}>
-      <div className="absolute bottom-0 left-5.5 w-80 h-80 bg-primary/30 dark:bg-primary rotate-120 animate-aurora drop-shadow-2xl drop-shadow-primary/50 blur-3xl -z-50" />
-      <div className="absolute top-[50%] animate-pulse animation-duration-[10s] right-5.5 w-44 h-44 bg-primary/30 dark:bg-primary rotate-120 drop-shadow-2xl drop-shadow-primary/50 blur-3xl -z-50 bg-animate" />
+      <div className="absolute bottom-0 left-5.5 w-80 h-80 bg-primary/30 dark:bg-primary/22 rotate-120 animate-aurora drop-shadow-2xl drop-shadow-primary/50 blur-3xl -z-50" />
+      <div className="absolute top-[50%] animate-pulse animation-duration-[10s] right-5.5 w-44 h-44 bg-primary/30 dark:bg-primary/25 rotate-120 drop-shadow-2xl drop-shadow-primary/50 blur-3xl -z-50 bg-animate" />
 
       <div className="container mx-auto px-4 z-50">
         <div className="max-w-2xl mx-auto">
