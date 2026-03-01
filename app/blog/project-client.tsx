@@ -107,6 +107,10 @@ export const ProjectClient = ({ id }: { id: string }) => {
 
           {/* Descripción */}
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            {projectData.description}
+          </p>
+
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
             {projectData.long_description}
           </p>
 
@@ -143,11 +147,11 @@ export const ProjectClient = ({ id }: { id: string }) => {
             </Button>
           </div>
 
-          {/* Proyectos destacados */}
+          {/* Publicaciones destacadas */}
           {relatedProjects.length > 0 && (
             <div className="text-center py-4">
             <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-              Otros Proyectos
+              Otras Publicaciones
             </span>
           </div>
           )}
@@ -164,12 +168,12 @@ export const ProjectClient = ({ id }: { id: string }) => {
                 1024: { slidesPerView: 3 },
               }}
             >
-              {relatedProjects.map((project) => (
+              {relatedProjects.length > 0 && relatedProjects.map((project) => (
                 <SwiperSlide>
                   <Link
                     key={project.id}
                     href={`/project/${project.id}`}
-                    className="bg-card/50 border-border border rounded-xl transition-all duration-300 overflow-hidden"
+                    className="bg-card/50 border-border border rounded-xl transition-all duration-300 overflow-hidden hover:border-primary/50"
                   >
                     {/* Project Image */}
                     <div className="relative aspect-video overflow-hidden">

@@ -1,6 +1,4 @@
-import React from "react";
-
-const SITE_URL = "https://www.instituto-ingles.com";
+const SITE_URL = "https://www.instituto-ingles.vercel.app";
 
 export default function Head() {
   const jsonLd = {
@@ -10,7 +8,7 @@ export default function Head() {
     url: SITE_URL,
     description:
       "Instituto con 52 años de experiencia en la enseñanza del inglés, especializado en competencia comunicativa, grupos reducidos y seguimiento individual.",
-    logo: `${SITE_URL}/logo.png`,
+    logo: `${SITE_URL}/logo-instituto.png`,
   };
 
   return (

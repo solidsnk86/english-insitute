@@ -241,7 +241,7 @@ export function AnalyticsManager() {
             Estadísticas de tu sitio web en tiempo real
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 z-20">
           <Select value={timeframe} onValueChange={setTimeframe}>
             <SelectTrigger className="w-[140px]">
               <SelectValue />

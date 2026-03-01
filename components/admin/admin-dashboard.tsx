@@ -10,6 +10,8 @@ import {
   BarChart3,
   Crown,
   NewspaperIcon,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getSupabase } from "@/lib/supabase";
@@ -20,6 +22,7 @@ import { AnalyticsManager } from "./analytics-manager";
 import { AppointmentsManager } from "./appointments-manager";
 import { useMessages } from "@/app/contexts/use-messages";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 type TabType = "projects" | "messages" | "analytics" | "home" | "appointments";
 
@@ -34,6 +37,7 @@ export function AdminDashboard({ user }: { user: User }) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabType>("projects");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { theme, setTheme } = useTheme()
 
   const logoutSessionSound = () => {
     const audio = new Audio("/sounds/win11shutdown.ogv");
@@ -115,9 +119,6 @@ export function AdminDashboard({ user }: { user: User }) {
               <div>
                 <span className="font-bold text-xl text-foreground">
                   Instituto
-                  <span className="bg-clip-text text-transparent bg-linear-120 from-teal-500 via-teal-800 to-teal-900">
-                    Inglés
-                  </span>
                 </span>
                 <p className="text-xs text-muted-foreground">Panel Admin</p>
               </div>
@@ -184,6 +185,12 @@ export function AdminDashboard({ user }: { user: User }) {
                   </button>
                 </li>
               ))}
+              <li
+               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+               className="w-full flex items-center text-muted-foreground gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-teal-700/10 hover:text-foreground cursor-default">
+                {theme === "dark" ? <Moon size={22} /> : <Sun size={22} />}
+                <span>Tema {theme === "dark" ? "Oscuro" : "Claro"}</span>
+              </li>
             </ul>
           </nav>
 

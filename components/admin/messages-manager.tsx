@@ -148,7 +148,7 @@ export function MessagesManager() {
           variant="outline"
           onClick={getMessages}
           disabled={isLoading}
-          className="w-full sm:w-auto"
+          className="w-full sm:w-auto z-20"
         >
           <RefreshCw
             className={`w-4 h-4 mr-2 ${isLoading ? "animate-spin" : ""}`}

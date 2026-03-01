@@ -29,6 +29,7 @@ import { Project } from "@/app/types/definitions";
 type ProjectFormData = {
   title: string;
   description: string;
+  long_description: string;
   image_url: string;
   tags: string;
   link: string;
@@ -38,6 +39,7 @@ type ProjectFormData = {
 const emptyForm: ProjectFormData = {
   title: "",
   description: "",
+  long_description: "",
   image_url: "",
   tags: "",
   link: "",
@@ -66,6 +68,7 @@ export function ProjectsManager() {
     setFormData({
       title: project.title,
       description: project.description,
+      long_description: project.long_description || "",
       image_url: project.image_url || "",
       tags: project.tags || "",
       link: project.link || "",
@@ -103,7 +106,7 @@ export function ProjectsManager() {
 
       // Subir a Supabase Storage
       const { error } = await supabase.storage
-        .from("studio-neo")
+        .from("english-institute")
         .upload(filePath, file, {
           cacheControl: "3600",
           upsert: false,
@@ -115,7 +118,7 @@ export function ProjectsManager() {
 
       // Obtener URL pública
       const { data: urlData } = supabase.storage
-        .from("studio-neo")
+        .from("english-institute")
         .getPublicUrl(filePath);
 
       const publicUrl = urlData.publicUrl;
@@ -139,6 +142,7 @@ export function ProjectsManager() {
     const projectData = {
       title: formData.title,
       description: formData.description,
+      long_description: formData.long_description || null,
       image_url: formData.image_url || null,
       tags: formData.tags,
       link: formData.link || null,
@@ -221,10 +225,10 @@ export function ProjectsManager() {
           <DialogTrigger asChild>
             <Button onClick={openCreateDialog}>
               <Plus className="w-4 h-4 mr-2" />
-              Nuevo Publicación
+              Nueva Publicación
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+          <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto overflow-x-hidden">
             <DialogHeader>
               <DialogTitle>
                 {editingProject ? "Editar Proyecto" : "Nuevo Proyecto"}
@@ -250,7 +254,7 @@ export function ProjectsManager() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="description">Descripción</Label>
+                <Label htmlFor="description">Descripción breve</Label>
                 <Textarea
                   id="description"
                   value={formData.description}
@@ -260,7 +264,26 @@ export function ProjectsManager() {
                       description: e.target.value,
                     }))
                   }
-                  placeholder="Descripción del proyecto"
+                  className="resize-none"
+                  placeholder="Descripción breve del proyecto"
+                  rows={3}
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="long_description">Descripción larga</Label>
+                <Textarea
+                  id="long_description"
+                  value={formData.long_description}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      long_description: e.target.value,
+                    }))
+                  }
+                  className="resize-none"
+                  placeholder="Descripción más detallada"
                   rows={3}
                   required
                 />
@@ -347,14 +370,14 @@ export function ProjectsManager() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="tags">Tags (separados por coma)</Label>
+                <Label htmlFor="tags">Hashtags (separados por coma)</Label>
                 <Input
                   id="tags"
                   value={formData.tags}
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, tags: e.target.value }))
                   }
-                  placeholder="React, Next.js, Tailwind"
+                  placeholder="#Instituto, #Inglés, #Londres"
                 />
               </div>
 

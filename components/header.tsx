@@ -1,15 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, Text, X } from "lucide-react";
+import { Text, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { getSupabase } from "@/lib/supabase";
 import { FancyButton } from "./fancy-button";
-import { useLocation } from "@/app/contexts/use-location";
 import { ThemeToggle } from "./theme-toggle";
-import { useTheme } from "next-themes";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
