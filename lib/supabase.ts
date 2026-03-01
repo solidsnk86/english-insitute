@@ -12,17 +12,3 @@ export function getSupabase(): Promise<SupabaseClient> {
   }
   return supabaseInstance;
 }
-
-export type ContactMessage = {
-  id: string;
-  name: string;
-  email: string;
-  message: string;
-  created_at: string;
-  status: boolean;
-  ip: string;
-  city: string;
-  country: string;
-  timezone: string;
-  system: string;
-};

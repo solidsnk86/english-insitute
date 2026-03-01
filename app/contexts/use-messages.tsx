@@ -1,6 +1,6 @@
 "use client";
 
-import { getSupabase, type ContactMessage } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import {
   createContext,
   ReactNode,
@@ -9,6 +9,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { ContactMessage } from "../types/definitions";
 
 type LeadsContextType = {
   messages: ContactMessage[];
