@@ -64,7 +64,7 @@ export function AdminDashboard({ user }: { user: User }) {
   }, []);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen overflow-x-hidden">
       {/* Mobile Sidebar Toggle */}
       {!isSidebarOpen ? (
         <div className="fixed top-0 left-0 bg-card p-4 w-full z-50 md:hidden mask-b-from-3">
