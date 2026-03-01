@@ -87,7 +87,7 @@ export function Header() {
     return (
           <div className="absolute top-0 left-0 w-full h-full z-50 bg-zinc-950/50">
             <div className={`fixed top-0 left-0 w-full h-dvh transition-transform duration-900 ${isMenuOpen ? "translate-y-0" : "translate-y-[100%]"}`}>
-               <nav className="md:hidden h-dvh items-center backdrop-blur-2xl grid z-50 relative">
+               <nav className="md:hidden h-dvh items-center bg-background grid z-50 relative">
                 <button onClick={handleMenuIsOpen} className="absolute top-9 left-9 outline-4 outline-primary/30 p-1 rounded-md">
                   <X size={26} className="z-50" />
                 </button>
