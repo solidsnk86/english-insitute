@@ -88,8 +88,9 @@ export function Header() {
           <div className="absolute top-0 left-0 w-full h-full z-50 bg-zinc-950/50">
             <div className={`fixed top-0 left-0 w-full h-dvh transition-transform duration-900 ${isMenuOpen ? "translate-y-0" : "translate-y-[100%]"}`}>
                <nav className="md:hidden h-dvh items-center bg-background grid z-50 relative">
-                <button onClick={handleMenuIsOpen} className="absolute top-9 left-9 outline-4 outline-primary/30 p-1 rounded-md">
+                <button onClick={handleMenuIsOpen} className="absolute top-9 left-9 outline-4 outline-primary/30 dark:outline-primary/60 p-1 rounded-md">
                   <X size={26} className="z-50" />
+                  <span className="sr-only">Cerrar Menú</span>
                 </button>
               <div className="flex flex-col text-center gap-4 p-4">
               {navLinks.map((link) => (
