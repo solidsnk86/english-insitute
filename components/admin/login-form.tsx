@@ -24,7 +24,7 @@ export function LoginForm() {
   const initSessionSound = () => {
     const audio = new Audio("/sounds/win11.ogv");
     if (audio) {
-      audio.volume = 0.5;
+      audio.volume = 0.8;
       audio.play();
     }
 
