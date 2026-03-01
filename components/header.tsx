@@ -52,7 +52,7 @@ export function Header() {
 
   //   try {
   //     const { data, error } = await supabase
-  //       .from("sn_visitors")
+  //       .from("visitors")
   //       .select("*")
   //       .order("created_at", { ascending: false })
   //       .limit(1);
@@ -87,7 +87,7 @@ export function Header() {
   // }, []);
 
   return (
-    <header className="fixed top-4 md:left-8 md:right-8 left-3 right-3 rounded-xl z-50 bg-white/60 dark:bg-black/50 backdrop-blur-lg border-b border-border shadow-lg dark:shadow-2xl dark:shadow-slate-900/80">
+    <header className="fixed top-4 md:left-8 md:right-8 left-3 right-3 rounded-xl z-50 bg-white/60 dark:bg-black/50 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Mobile Menu Button */}

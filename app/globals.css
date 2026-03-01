@@ -512,3 +512,18 @@ dialog::backdrop {
     stroke-width: 2.5;
   }
 }
+
+.marquee {
+  animation: marquee 54s linear infinite;
+  display: flex;
+  min-width: max-content;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-38%);
+  }
+}
