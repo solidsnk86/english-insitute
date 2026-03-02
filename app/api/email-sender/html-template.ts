@@ -44,7 +44,7 @@ export const HTMLTemplate = ({
       }
     </style>
   </head>
-  <body class="email-body" style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f5f5f5; margin: 0; padding: 16px;">
+  <body class="email-body" style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f5f5f5; margin: 0; padding: 4px;">
     <div class="email-container" style="background-color: #ffffff; max-width: 600px; margin: 40px auto; border-radius: 16px; border: 1px solid #e5e5e5; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;">
       
       <!-- Hero Image -->
@@ -61,7 +61,7 @@ export const HTMLTemplate = ({
         <img 
           src="https://english-insitute.vercel.app/logo-instituto.png" 
           alt="Instituto Logo" 
-          style="width: 80px; height: 80px; margin-bottom: 16px;"
+          style="width: 80px; height: 90px; margin-bottom: 16px;"
         />
         <h1 class="text-heading" style="margin: 0; font-size: 22px; font-weight: 700; color: #171717; letter-spacing: -0.5px;">
           Instituto Integral del <span class="text-primary" style="color: #0d9488;">Idioma Inglés</span>
