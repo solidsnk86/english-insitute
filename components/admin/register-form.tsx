@@ -61,7 +61,7 @@ export function RegisterForm() {
       <div className="flex justify-center mb-4">
         <Link href="/" className="flex items-center">
           <Image
-            className="bg-transparent"
+            className="bg-transparent relative"
             src="/logo-instituto.png"
             width={85}
             height={85}

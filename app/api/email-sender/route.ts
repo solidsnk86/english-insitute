@@ -2,9 +2,9 @@ import nodemailer from "nodemailer";
 import { HTMLTemplate } from "./html-template";
 
 export async function POST(req: Request) {
-  const { name, email, time, appointment } = await req.json();
+  const { name, email, message } = await req.json();
 
-  if (!name || !email || !appointment) {
+  if (!name || !email || !message) {
     return Response.json({ message: "Faltan parámetros" }, { status: 400 });
   }
 
@@ -18,10 +18,10 @@ export async function POST(req: Request) {
     });
 
     const send = await transport.sendMail({
-      html: HTMLTemplate({ name, email, time, appointment }),
+      html: HTMLTemplate({ name }),
       from: "studioneo.contacto@gmail.com",
       to: email,
-      subject: `Gracias ${name} por contactarme!`,
+      subject: `Gracias ${name} por contactarnos - Instituto Integral del Idioma Inglés`,
     });
 
     if (send.accepted) {

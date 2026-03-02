@@ -53,7 +53,7 @@ export const ForgottenPasswordForm = () => {
         <div className="flex justify-center">
           <Link href="/admin" className="flex items-center">
             <Image
-              className="bg-transparent"
+              className="bg-transparent relative"
               src="/logo-instituto.png"
               width={85}
               height={85}
@@ -77,7 +77,7 @@ export const ForgottenPasswordForm = () => {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="admin@studioneo.com"
+                  placeholder="admin@institutoitegralingles.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   onClick={() => {

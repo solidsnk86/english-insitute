@@ -1,13 +1,14 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { CircleAlert } from "lucide-react";
 import { getSupabase } from "@/lib/supabase";
 import { toast } from "sonner";
 import { useLocation } from "@/app/contexts/use-location";
 import Image from "next/image";
 import { validateForm } from "@/app/utils/form-validator";
+import { Textarea } from "./ui/textarea";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -33,6 +34,11 @@ export function ContactForm() {
       }
     }
   };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,14 +76,14 @@ export function ContactForm() {
 
       if (error) {
         setStatus("error");
-        setErrorMessage("There was an error sending the message. Please try again.");
+        setErrorMessage("Hubo un error al enviar el mensaje, Pr favor intente de nuevo.");
 
         const leads = JSON.parse(
-          localStorage.getItem("studioneo_leads") || "[]",
+          localStorage.getItem("instituto_messages") || "[]",
         );
 
         leads.push({ ...formData, created_at: new Date().toISOString() });
-        localStorage.setItem("studioneo_leads", JSON.stringify(leads));
+        localStorage.setItem("instituto_messages", JSON.stringify(leads));
       }
 
       const response = await fetch("/api/email-sender", {
@@ -139,7 +145,15 @@ export function ContactForm() {
               Te asesoramos para que elijas la mejor opción según tu nivel, objetivos y disponibilidad.
             </p>
           </div>
-
+          <div className="p-3 md:p-0 md:bg-none md:dark:bg-none bg-white/50 dark:bg-card/50 rounded-xl">
+            <Textarea
+              className="relative mt-6 flex w-full bg-white/50 dark:bg-card/50 flex-col items-stretch justify-stretch gap-4 rounded-xl p-4 shadow-no border border-border transition-all md:mt-8 md:flex-row md:items-center md:gap-0 md:rounded-xl resize-none"
+              placeholder="Haznos tu consulta aquí..."
+              onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
+              value={formData.message}
+              name="message"
+            />
+          </div>
           <form
             onSubmit={handleSubmit}
             className="relative mt-6 flex w-full bg-white/50 dark:bg-card/50 flex-col items-stretch justify-stretch gap-4 rounded-xl p-4 xl:p-1 transition-all md:mt-8 md:flex-row md:items-center md:gap-0 md:rounded-xl"
@@ -147,9 +161,7 @@ export function ContactForm() {
             <div className="pointer-events-none absolute inset-0 hidden rounded-lg border border-border md:block" />
             <input
               className="flex-1 px-4 py-3.5 text-base/none text-foreground rounded-lg placeholder:text-muted-foreground outline-none ring-1 ring-border transition-all focus:ring-2 focus:ring-primary md:rounded-md md:bg-transparent md:px-4 md:py-3 md:text-sm/none md:ring-0 ring-inset"
-              onChange={(e) =>
-                setFormData((prev) => ({ ...prev, name: e.target.value }))
-              }
+              onChange={handleChange}
               onClick={() => {
                 setErrorMessage("");
               }}
@@ -167,9 +179,7 @@ export function ContactForm() {
               type="email"
               value={formData.email}
               name="email"
-              onChange={(e) =>
-                setFormData((prev) => ({ ...prev, email: e.target.value }))
-              }
+              onChange={handleChange}
               onClick={() => {
                 setErrorMessage("");
               }}

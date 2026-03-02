@@ -59,15 +59,15 @@ export function LoginForm() {
       <div className="flex justify-center mb-4">
         <div>
           <Link href="/" className="flex items-center justify-center">
-          <Image
-            className="bg-transparent"
-            src="/logo-instituto.png"
-            width={85}
-            height={85}
-            alt=""
-          />
-        </Link>
-        <h3 className="text-2xl font-bold">Panel de administración</h3>
+            <Image
+              className="bg-transparent relative"
+              src="/logo-instituto.png"
+              width={85}
+              height={85}
+              alt=""
+            />
+          </Link>
+          <h3 className="text-2xl font-bold">Panel de administración</h3>
         </div>
       </div>
       <Card className="bg-card/50 border-border">
