@@ -16,8 +16,8 @@ export function Projects() {
     swiperRef ? swiperRef?.activeIndex + 1 : 1,
   );
 
-  const featuredProjects = Array.isArray(projects) ? 
-  projects.filter((project) => project.featured === true) : []
+  const featuredProjects = Array.isArray(projects) ?
+    projects.filter((project) => project.featured === true) : []
 
   return (
     <section id="proyectos" className="relative">
@@ -25,13 +25,13 @@ export function Projects() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="text-primary text-sm font-semibold tracking-wider uppercase">
-            Sección Blog
+            Nuestro Blog
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance section-title" data-anim="right">
-            Que dicen nuestros alumnos
+            Artículos y recursos para aprender inglés
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Una selección de nuestros articulos más recientes.
+            Una selección de nuestros artículos más recientes.
           </p>
         </div>
 
