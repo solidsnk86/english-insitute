@@ -1,5 +1,12 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { BookOpen, Users, User, Briefcase, Award, Laptop } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
@@ -37,6 +44,32 @@ const services = [
 ];
 
 export function Services() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (gridRef.current) {
+        const cards = gridRef.current.querySelectorAll(".card-comp");
+
+        gsap.set(cards, { opacity: 0, y: 60 });
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        });
+      }
+    }, gridRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="cursos" className="relative">
       <div className="container mx-auto px-4">
@@ -56,7 +89,7 @@ export function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={gridRef} className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Efecto de background superior */}
           <div className="absolute -left-50 -top-25 w-120 h-120 rounded-full blur-3xl bg-teal-500/10 dark:bg-teal-800/20 opacity-40"></div>
           <div className="absolute -left-14 top-7 w-120 h-120 rounded-full blur-3xl bg-teal-400/15 dark:bg-teal-700/25 opacity-40"></div>

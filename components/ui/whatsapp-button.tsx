@@ -26,7 +26,7 @@ export const WhatsAppIcon = ({ size = 24, className = "" }) => {
 export const WhatsAppButton = () => {
   return (
     <div
-      className="fixed bottom-4 right-4 p-3 rounded-full border-border bg-background z-20 hover:scale-110 transition-transform border border-border"
+      className="fixed md:bottom-4 md:right-4 bottom-4 right-3 p-3 rounded-full border-border bg-background z-20 hover:scale-110 transition-transform border border-border"
       onClick={() => sendWhatsApp("+542604405974")}
     >
       <WhatsAppIcon

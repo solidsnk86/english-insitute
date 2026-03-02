@@ -1,17 +1,14 @@
 "use client";
 
 import { ArrowRight, Sparkles } from "lucide-react";
-import { useProjects } from "@/app/contexts/use-projects";
 import Typewriter from "typewriter-effect";
 import AnimatedNumbers from "react-animated-numbers";
 
 export function Hero() {
-  const { projects } = useProjects();
-
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center pt-14"
+      className="relative min-h-screen flex items-center justify-center md:pt-14"
     >
       {/* Aurora Background Effect */}
       <div className="absolute top-1/4 -left-1/4 w-150 h-150 bg-primary/20 dark:bg-primary/70 rounded-full blur-[120px] animate-aurora opacity-80" />
