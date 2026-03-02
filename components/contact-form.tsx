@@ -45,9 +45,9 @@ export function ContactForm() {
       if (!result.success) {
         setErrorMessage(
           result.errors?.name ||
-            result.errors?.email ||
-            result.errors?.message ||
-            "",
+          result.errors?.email ||
+          result.errors?.message ||
+          "",
         );
         return;
       }
@@ -129,11 +129,14 @@ export function ContactForm() {
             <span className="text-primary text-sm font-semibold tracking-wider uppercase">
               Contacto
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance section-title" data-anim="bottom">
-              Consulta sobre cupos disponibles
+            <h2
+              className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4 text-balance section-title"
+              data-anim="bottom"
+            >
+              Consultas e inscripciones
             </h2>
             <p className="text-muted-foreground text-pretty">
-              Te acompañamos con clases claras, prácticas y enfocadas en resultados reales.
+              Te asesoramos para que elijas la mejor opción según tu nivel, objetivos y disponibilidad.
             </p>
           </div>
 

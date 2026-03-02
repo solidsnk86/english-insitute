@@ -60,6 +60,7 @@ export const LocationProvider = ({ children }: { children: ReactNode }) => {
     country: location
       ? location.country
       : { name: "N/A", emojiFlag: "N/A", timezone: "N/A" },
+    sysInfo: location?.sysInfo
   };
 
   return (

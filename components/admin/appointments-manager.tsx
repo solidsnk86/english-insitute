@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { Calendar } from "@/components/ui/calendar";
@@ -25,7 +25,6 @@ import {
 } from "@/components/ui/dialog";
 import { Clock, CalendarDays, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { useAppointments } from "@/app/contexts/use-appointments";
 import { closeDialog, showDialog } from "../showDialog";
 import { formatDate, formatTime } from "@/app/utils/format-date";
 
@@ -54,15 +53,73 @@ export function AppointmentsManager() {
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [clientName, setClientName] = useState("");
-  const {
-    appointments,
-    isLoading: loading,
-    getAppointments,
-    sendAppointment,
-    getSlotStatus,
-    cancelAppointment,
-    markAsAvalaibleAppointment,
-  } = useAppointments();
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch appointments from API
+  const getAppointments = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/appointments");
+      const json = await res.json();
+      if (json.data) setAppointments(json.data);
+    } catch (error) {
+      console.error("Error fetching appointments:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // Get slot status based on current date and appointments
+  const getSlotStatus = useCallback(
+    (time: string): AppointmentStatus => {
+      if (!date) return "available";
+      const dateStr = format(date, "yyyy-MM-dd");
+      const appt = appointments.find(
+        (a) => a.date === dateStr && a.time === time
+      );
+      return appt ? appt.status : "available";
+    },
+    [date, appointments]
+  );
+
+  // Send appointment to API
+  const sendAppointment = useCallback(
+    async (data: Omit<Appointment, "id">) => {
+      const res = await fetch("/api/appointments/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Error al enviar cita");
+    },
+    []
+  );
+
+  // Cancel appointment
+  const cancelAppointment = useCallback(async (id: string) => {
+    const res = await fetch("/api/appointments", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status: "cancelled" }),
+    });
+    if (!res.ok) throw new Error("Error al cancelar cita");
+  }, []);
+
+  // Mark as available
+  const markAsAvalaibleAppointment = useCallback(async (id: string) => {
+    const res = await fetch("/api/appointments", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    if (!res.ok) throw new Error("Error al marcar como disponible");
+  }, []);
+
+  // Load appointments on mount
+  useEffect(() => {
+    getAppointments();
+  }, [getAppointments]);
 
   // Manejar reserva
   const handleBooking = async () => {
@@ -108,8 +165,8 @@ export function AppointmentsManager() {
           title:
             appt.status === "cancelled"
               ? "Turno: " +
-                formatDate(`${appt.date}, ${appt.time}`) +
-                " Cancelado"
+              formatDate(`${appt.date}, ${appt.time}`) +
+              " Cancelado"
               : "Turno: " + formatDate(`${appt.date}, ${appt.time}`),
           headerColor: "oklch(14.1% 0.005 285.823)",
           content: (
@@ -251,13 +308,12 @@ export function AppointmentsManager() {
                             ? "default"
                             : "outline"
                       }
-                      className={`h-auto py-3 flex flex-col items-center gap-1 transition-all ${
-                        status === "confirmed"
+                      className={`h-auto py-3 flex flex-col items-center gap-1 transition-all ${status === "confirmed"
                           ? "opacity-50 border-transparent bg-muted/50"
                           : status === "blocked"
                             ? "hidden"
                             : "hover:border-blue-300 border"
-                      }`}
+                        }`}
                       onClick={() => handleSlotClick(time)}
                     >
                       <Clock className="w-4 h-4 mb-1 opacity-50" />

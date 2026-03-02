@@ -67,9 +67,9 @@ export function AdminDashboard({ user }: { user: User }) {
     <div className="flex min-h-screen overflow-x-hidden">
       {/* Mobile Sidebar Toggle */}
       {!isSidebarOpen ? (
-        <div className="fixed top-0 left-0 bg-card p-4 w-full z-50 md:hidden mask-b-from-3">
+        <div className="fixed top-0 left-0 p-4 w-full z-50 md:hidden">
           <button
-            className="p-2 bg-linear-to-b from-zinc-900 to-zinc-700 rounded-lg border-t border-zinc-800 border-x border-b border-b-zinc-500 hover:brightness-125"
+            className="p-2 rounded-md border border-border z-10 bg-card"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           >
             <svg
@@ -93,9 +93,8 @@ export function AdminDashboard({ user }: { user: User }) {
 
       {/* Sidebar */}
       <aside
-        className={`fixed md:sticky inset-y-0 left-0 z-50 w-64 h-dvh backdrop-blur-lg border-r border-border transform transition-transform ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-        }`}
+        className={`fixed md:sticky inset-y-0 left-0 z-50 w-64 h-dvh backdrop-blur-lg border-r border-border transform transition-transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+          }`}
       >
         <div className="flex flex-col h-full">
           {/* Header */}
@@ -108,13 +107,6 @@ export function AdminDashboard({ user }: { user: User }) {
                   src="/video-peebles.webm"
                   className="w-full bg-transparent rounded blur-[0.8px]"
                 />
-                {/* <Image
-                  className="bg-transparent"
-                  src="/logo.png"
-                  width={45}
-                  height={45}
-                  alt=""
-                /> */}
               </div>
               <div>
                 <span className="font-bold text-xl text-foreground">
@@ -150,11 +142,10 @@ export function AdminDashboard({ user }: { user: User }) {
                       setActiveTab(tab.id);
                       setIsSidebarOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors relative ${
-                      activeTab === tab.id
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-teal-700/10 hover:text-foreground"
-                    }`}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors relative ${activeTab === tab.id
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-teal-700/10 hover:text-foreground"
+                      }`}
                   >
                     <div className="relative">
                       <tab.icon className="w-5 h-5" />
@@ -170,7 +161,7 @@ export function AdminDashboard({ user }: { user: User }) {
                           </>
                         ) : null
                       ) : null}
-                    </div>  
+                    </div>
                     <span>{tab.label}</span>
                     {tab.id === "analytics" ? (
                       <div className="absolute top-4 right-3 text-[10px] bg-linear-to-b from-teal-600 to-teal-800 border border-teal-600 rounded-full text-white px-2">
@@ -186,8 +177,8 @@ export function AdminDashboard({ user }: { user: User }) {
                 </li>
               ))}
               <li
-               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-               className="w-full flex items-center text-muted-foreground gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-teal-700/10 hover:text-foreground cursor-default">
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="w-full flex items-center text-muted-foreground gap-3 px-4 py-3 rounded-lg transition-colors hover:bg-teal-700/10 hover:text-foreground cursor-default">
                 {theme === "dark" ? <Moon size={22} /> : <Sun size={22} />}
                 <span>Tema {theme === "dark" ? "Oscuro" : "Claro"}</span>
               </li>

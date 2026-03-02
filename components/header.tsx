@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { Text, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { FancyButton } from "./fancy-button";
 import { ThemeToggle } from "./theme-toggle";
+import { getSupabase } from "@/lib/supabase";
+import { useLocation } from "@/app/contexts/use-location";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -18,8 +20,7 @@ const navLinks = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const { ip, city, country, sysInfo } = useLocation();
-  // const { theme } = useTheme();
+  const { ip, city, country, sysInfo } = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -43,56 +44,54 @@ export function Header() {
     }
   };
 
-  // const sendDataLocation = useCallback(async () => {
-  //   const supabase = await getSupabase();
-  //   const currentIp = ip;
+  const sendDataLocation = useCallback(async () => {
+    if (ip === "N/A") return;
 
-  //   try {
-  //     const { data, error } = await supabase
-  //       .from("visitors")
-  //       .select("*")
-  //       .order("created_at", { ascending: false })
-  //       .limit(1);
+    const supabase = await getSupabase()
+    const { data, error } = await supabase.from("visitors").select("ip").limit(1).order("created_at", { ascending: false }).single();
+    if (error) throw new Error(error.message);
+    const lastIP = data.ip;
+    const currentIP = ip;
 
-  //     if (error) {
-  //       throw new Error(error.message);
-  //     }
+    try {
+      if (lastIP !== currentIP) {
+        const res = await fetch("/api/analytics", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            ip,
+            city: city.name,
+            country: country.name,
+            timezone: country.timezone,
+            system: sysInfo?.system,
+            browser: sysInfo?.webBrowser.browser,
+            emoji_flag: country.emojiFlag,
+          })
+        })
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }, [ip, city, country, sysInfo]);
 
-  //     const lastIp = data[0].ip;
-
-  //     if (lastIp !== currentIp) {
-  //       setTimeout(async () => {
-  //         await fetch("/api/analytics", {
-  //           method: "POST",
-  //           headers: { "Content-Type": "aplication/json" },
-  //           body: JSON.stringify({
-  //             ip,
-  //             city: city.name,
-  //             country: country.name,
-  //             sysInfo,
-  //           }),
-  //         }).catch((err) => console.error(err));
-  //       }, 900);
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   sendDataLocation();
-  // }, []);
+  useEffect(() => {
+    sendDataLocation();
+  }, [sendDataLocation]);
 
   if (isMenuOpen) {
     return (
-          <div className="absolute top-0 left-0 w-full h-full z-50 bg-zinc-950/50">
-            <div className={`fixed top-0 left-0 w-full h-dvh transition-transform duration-900 ${isMenuOpen ? "translate-y-0" : "translate-y-[100%]"}`}>
-               <nav className="md:hidden h-dvh items-center bg-background grid z-50 relative">
-                <button onClick={handleMenuIsOpen} className="absolute top-9 left-9 outline-4 outline-primary/30 dark:outline-primary/60 p-1 rounded-md">
-                  <X size={26} className="z-50" />
-                  <span className="sr-only">Cerrar Menú</span>
-                </button>
-              <div className="flex flex-col text-center gap-4 p-4">
+      <div className="absolute top-0 left-0 w-full h-full z-50 bg-zinc-950/50">
+        <div className={`fixed top-0 left-0 w-full h-dvh transition-transform duration-900 ${isMenuOpen ? "translate-y-0" : "translate-y-[100%]"}`}>
+          <nav className="md:hidden h-dvh items-center bg-background grid z-50 relative">
+            <button onClick={handleMenuIsOpen} className="absolute top-9 left-9 outline-4 outline-primary/30 dark:outline-primary/60 p-1 rounded-md">
+              <X size={26} className="z-50" />
+              <span className="sr-only">Cerrar Menú</span>
+            </button>
+            <div className="flex flex-col text-center gap-4 p-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -123,9 +122,9 @@ export function Header() {
               </FancyButton>
             </div>
           </nav>
-            </div>
         </div>
-        )
+      </div>
+    )
   }
 
   return (

@@ -4,7 +4,7 @@ export async function GET() {
   try {
     const supabase = await getSupabase();
     const { data, error } = await supabase
-      .from("sn_visitors")
+      .from("visitors")
       .select("*")
       .order("created_at", { ascending: false });
     if (error) {

@@ -5,11 +5,10 @@ import "./globals.css";
 import { ProjectProvider } from "./contexts/use-projects";
 import { LeadsProvider } from "./contexts/use-messages";
 import { Toaster } from "@/components/ui/sonner";
-import { AppointmentsProvider } from "./contexts/use-appointments";
 import { LocationProvider } from "./contexts/use-location";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const poppins = Poppins({ weight: ["300"] ,subsets: ["latin"] });
+const poppins = Poppins({ weight: ["300"], subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -63,11 +62,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-  icon: [
-    { url: "/favicon-512x512.png", sizes: "512x512", type: "image/png" },
-  ],
-  apple: "/apple-touch-icon.png",
-},
+    icon: [
+      { url: "/favicon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -89,9 +88,7 @@ export default function RootLayout({
         >
           <LocationProvider>
             <ProjectProvider>
-              <AppointmentsProvider>
-                <LeadsProvider>{children}</LeadsProvider>
-              </AppointmentsProvider>
+              <LeadsProvider>{children}</LeadsProvider>
             </ProjectProvider>
           </LocationProvider>
           <Toaster richColors position="bottom-right" />

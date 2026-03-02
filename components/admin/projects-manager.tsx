@@ -218,7 +218,7 @@ export function ProjectsManager() {
         <div>
           <h1 className="text-2xl font-bold text-foreground">Publicaciones</h1>
           <p className="text-muted-foreground">
-            Gestiona los blogs del instituto 
+            Gestiona los blogs del instituto
           </p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -230,13 +230,13 @@ export function ProjectsManager() {
           </DialogTrigger>
           <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto overflow-x-hidden">
             <DialogHeader>
-              <DialogTitle>
-                {editingProject ? "Editar Proyecto" : "Nuevo Proyecto"}
+              <DialogTitle>Publicación
+                {editingProject ? "Editar Publicación" : "Nuevo Publicación"}
               </DialogTitle>
               <DialogDescription>
                 {editingProject
-                  ? "Modifica los datos del proyecto"
-                  : "Completa los datos del nuevo proyecto"}
+                  ? "Modifica los datos del publicación"
+                  : "Completa los datos del nuevo publicación"}
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -248,7 +248,7 @@ export function ProjectsManager() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, title: e.target.value }))
                   }
-                  placeholder="Nombre del proyecto"
+                  placeholder="Nombre del publicación"
                   required
                 />
               </div>
@@ -265,7 +265,7 @@ export function ProjectsManager() {
                     }))
                   }
                   className="resize-none"
-                  placeholder="Descripción breve del proyecto"
+                  placeholder="Descripción breve de la publicación"
                   rows={3}
                   required
                 />
@@ -283,14 +283,14 @@ export function ProjectsManager() {
                     }))
                   }
                   className="resize-none"
-                  placeholder="Descripción más detallada"
+                  placeholder="Descripción más detallada sobre la publicación"
                   rows={3}
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label>Imagen del proyecto</Label>
+                <Label>Imagen de la publicación</Label>
                 <div className="flex flex-col gap-3">
                   {/* Preview de imagen */}
                   {imagePreview && (
@@ -377,7 +377,7 @@ export function ProjectsManager() {
                   onChange={(e) =>
                     setFormData((prev) => ({ ...prev, tags: e.target.value }))
                   }
-                  placeholder="#Instituto, #Inglés, #Londres"
+                  placeholder="Ej: #Instituto, #Inglés, #SanRafael"
                 />
               </div>
 
@@ -509,14 +509,14 @@ export function ProjectsManager() {
                   <div className="flex flex-wrap gap-1">
                     {project
                       ? project.tags.split(",").map((tag) => (
-                          <Badge
-                            key={tag}
-                            variant="outline"
-                            className="text-xs"
-                          >
-                            {tag}
-                          </Badge>
-                        ))
+                        <Badge
+                          key={tag}
+                          variant="outline"
+                          className="text-xs"
+                        >
+                          {tag}
+                        </Badge>
+                      ))
                       : null}
                   </div>
                 )}
