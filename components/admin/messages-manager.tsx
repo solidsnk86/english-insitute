@@ -19,7 +19,7 @@ import { closeDialog, showDialog } from "../showDialog";
 import { formatDate } from "@/app/utils/format-date";
 import { toast } from "sonner";
 import { useMessages } from "@/app/contexts/use-messages";
-import { ContactMessage } from "@/lib/supabase";
+import { ContactMessage } from "@/app/types/definitions";
 
 export function MessagesManager() {
   const {
@@ -74,11 +74,11 @@ export function MessagesManager() {
 
   if (selectedLead) {
     return (
-      <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-4 sm:space-y-6 relative">
         <Button
           onClick={() => setSelectedLead(null)}
           variant="outline"
-          className="w-full sm:w-auto"
+          className="w-full sm:w-auto relative"
         >
           <ArrowLeft />
           Volver
@@ -106,7 +106,7 @@ export function MessagesManager() {
             {selectedLead.message}
           </p>
           <Button
-            className="text-xs sm:text-sm"
+            className="text-xs sm:text-sm cursor-pointer"
             onClick={() =>
               window.open(`mailto:${selectedLead.email}`, "_blank")
             }
@@ -237,13 +237,12 @@ export function MessagesManager() {
           </CardContent>
         </Card>
       ) : (
-        <div className="border-t border-border" ref={leadsRef}>
+        <div className="border-t border-border relative" ref={leadsRef}>
           {messages.map((messages, idx) => (
             <div
               key={messages.id}
-              className={`border-b border-border hover:bg-primary/5 transition-colors cursor-pointer ${
-                messages.status === false ? "bg-primary/10" : ""
-              } ${idx === 0 ? "" : ""}`}
+              className={`border-b border-border hover:bg-primary/5 transition-colors cursor-pointer ${messages.status === false ? "bg-primary/10" : ""
+                } ${idx === 0 ? "" : ""}`}
               onClick={() => handleClik(messages)}
             >
               {/* Vista Móvil */}
@@ -251,11 +250,10 @@ export function MessagesManager() {
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0 flex-1">
                     <h3
-                      className={`text-sm font-semibold truncate ${
-                        messages.status === false
-                          ? "text-white"
-                          : "text-foreground"
-                      }`}
+                      className={`text-sm font-semibold truncate ${messages.status === false
+                        ? "text-white"
+                        : "text-foreground"
+                        }`}
                     >
                       {messages.name}
                     </h3>
@@ -281,7 +279,7 @@ export function MessagesManager() {
                         onClick={(e) => {
                           e.stopPropagation();
                           markMessageAsRead(messages.id);
-                          toast.info("Se marcó el mesaje como leído.");
+                          toast.success("Se marcó el mesaje como leído.");
                         }}
                       >
                         <Mail size={16} />
@@ -294,7 +292,7 @@ export function MessagesManager() {
                         onClick={(e) => {
                           e.stopPropagation();
                           markMessageAsNotRead(messages.id);
-                          toast.info("Se marcó el mensaje como no leído.");
+                          toast.success("Se marcó el mensaje como no leído.");
                         }}
                       >
                         <MailOpen size={16} />
@@ -320,20 +318,18 @@ export function MessagesManager() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0 flex-1">
                     <h3
-                      className={`text-lg font-semibold hover:text-primary transition-colors ${
-                        messages.status === false
-                          ? "text-white"
-                          : "text-foreground"
-                      }`}
+                      className={`text-lg font-semibold hover:text-primary transition-colors ${messages.status === false
+                        ? "dark:text-white"
+                        : "text-foreground"
+                        }`}
                     >
                       {messages.name}
                     </h3>
                     <div
-                      className={`flex items-center gap-4 mt-2 text-sm ${
-                        messages.status === false
-                          ? "text-white"
-                          : "text-muted-foreground"
-                      }`}
+                      className={`flex items-center gap-4 mt-2 text-sm ${messages.status === false
+                        ? "dark:text-white"
+                        : "text-muted-foreground"
+                        }`}
                     >
                       <span className="flex items-center gap-1 truncate">
                         <Mail className="w-3 h-3 flex-shrink-0" />
@@ -349,7 +345,7 @@ export function MessagesManager() {
                           Leído
                         </span>
                       ) : (
-                        <span className="flex items-center gap-1 bg-linear-to-b from-blue-600 to-blue-800 border border-blue-600 px-3 rounded-full text-xs">
+                        <span className="flex items-center text-white gap-1 bg-linear-to-b from-teal-600 to-teal-800 border border-teal-600 px-3 rounded-full text-xs">
                           <Mail className="w-3 h-3" />
                           Nuevo!
                         </span>
@@ -375,7 +371,7 @@ export function MessagesManager() {
                     ) : (
                       <Button
                         title="Marcar copmo no léido"
-                        className="bg-black/25"
+                        className="bg-secondary border border-border"
                         variant="ghost"
                         size="sm"
                         onClick={(e) => {
@@ -388,7 +384,7 @@ export function MessagesManager() {
                       </Button>
                     )}
                     <Button
-                      className="bg-black/25 group"
+                      className="bg-secondary group border border-border"
                       variant="ghost"
                       size="sm"
                       onClick={(e) => {

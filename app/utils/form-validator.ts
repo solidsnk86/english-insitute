@@ -29,14 +29,6 @@ export const formSchema = z.object({
     .refine((val) => !containsDangerousContent(val), {
       message: "El mensaje contiene contenido no permitido.",
     }),
-  tel: z
-    .string()
-    .optional()
-    .refine((val) => (val ? val.length >= 6 && val.length <= 25 : true), {
-      message: "Número de teléfono inválido.",
-    }),
-  level: z.string().optional(),
-  schedule: z.string().optional(),
   email: z
     .string()
     .email({ message: "Debe indicar un email válido." })

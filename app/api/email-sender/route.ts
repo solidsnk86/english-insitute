@@ -2,9 +2,9 @@ import nodemailer from "nodemailer";
 import { HTMLTemplate } from "./html-template";
 
 export async function POST(req: Request) {
-  const { name, email, message } = await req.json();
+  const { name, email } = await req.json();
 
-  if (!name || !email || !message) {
+  if (!name || !email) {
     return Response.json({ message: "Faltan parámetros" }, { status: 400 });
   }
 

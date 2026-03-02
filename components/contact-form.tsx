@@ -17,7 +17,6 @@ export function ContactForm() {
     name: "",
     email: "",
     message: "",
-    tel: "",
   });
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -105,14 +104,14 @@ export function ContactForm() {
       playSound();
       setStatus("success");
       toast.info(data.message);
-      setFormData({ name: "", email: "", message: "", tel: "" });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       setErrorMessage((error as TypeError).message);
     } finally {
       setStatus("idle");
     }
   };
-
+  console.log(formData)
   return (
     <section id="contacto" className={`relative`}>
       <div className="absolute bottom-0 left-5.5 w-80 h-80 bg-primary/30 dark:bg-primary/22 rotate-120 animate-aurora drop-shadow-2xl drop-shadow-primary/50 blur-3xl -z-50" />
