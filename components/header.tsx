@@ -145,8 +145,8 @@ export function Header() {
             <Image
               className="bg-transparent"
               src="/logo-instituto.png"
-              width={80}
-              height={80}
+              width={33}
+              height={33}
               alt="Instituto logo"
             />
           </Link>
@@ -159,7 +159,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground font-semibold hover:text-foreground transition-colors text-sm"
+                className="text-muted-foreground font-semibold hover:text-primary transition-colors text-sm"
               >
                 {link.label}
               </Link>

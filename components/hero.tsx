@@ -43,7 +43,7 @@ export function Hero() {
                     "clases para niños.",
                     "cursos para adultos.",
                     "preparación en exámenes.",
-                    "clases empresas.",
+                    "clases para empresas.",
                   ],
                   autoStart: true,
                   loop: true,

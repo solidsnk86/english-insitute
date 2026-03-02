@@ -56,12 +56,12 @@ export function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center">
               <Image
-                  className="bg-transparent"
-                  src="/logo-instituto.png"
-                  width={90}
-                  height={90}
-                  alt="Instituto Inglés Logo"
-                />
+                className="bg-transparent"
+                src="/logo-instituto.png"
+                width={60}
+                height={60}
+                alt="Instituto Inglés Logo"
+              />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Academia de inglés con cursos presenciales y online, docentes
@@ -70,14 +70,13 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex items-center gap-3 mt-2">
               {socialLinks.map((social) => (
-                <a
+                <span
                   key={social.label}
-                  href={social.href}
                   className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-teal-700 hover:bg-primary/10 transition-colors"
                   aria-label={social.label}
                 >
                   <social.icon className="w-4 h-4" />
-                </a>
+                </span>
               ))}
             </div>
           </div>
