@@ -103,7 +103,7 @@ export function ContactForm() {
 
       playSound();
       setStatus("success");
-      toast.info(data.message);
+      toast.success(data.message);
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       setErrorMessage((error as TypeError).message);
